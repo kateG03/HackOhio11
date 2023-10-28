@@ -41,11 +41,16 @@ class _FloatingActionButtonExampleState
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Destination: '),
+          title: const Text('Destination: ', style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
+          backgroundColor: const Color.fromARGB(255, 198, 36, 36),
         ),
         body: Column(
             //mainAxisAlignment: MainAxisAlignment,
             children: [
+              const Divider(
+            height: 10,
+            color: Color.fromARGB(0, 0, 0, 0),
+          ),
               SizedBox(
                   height: 50,
                   child: DropdownMenu(
@@ -123,7 +128,7 @@ class _FloatingActionButtonExampleState
               const Divider(height: 18, color: Color.fromARGB(0, 0, 0, 0)),
               Container(
                   height: 400,
-                  color: const Color.fromARGB(255, 0, 0, 0),
+                  color: Color.fromARGB(255, 255, 255, 255),
                   child: _getImage(selectedFloor)),
               const Divider(height: 20, color: Color.fromARGB(0, 0, 0, 0)),
               Row(
