@@ -13,15 +13,6 @@ class _SpecificScreenState extends State<SpecificScreen> {
   Color selectedFloorColor = const Color.fromARGB(255, 198, 36, 36);
   int selectedFloor = 1;
 
-  String getDestination() {
-    if (widget.category == "Bathrooms") {
-      return "Bathrooms";
-    } else if (widget.category == "Food") {
-      return "Food";
-    } else {
-      return "Exits";
-    }
-  }
 
   Widget _getHighlightedImage(int newPosition) {
     if (widget.category == "Bathrooms") {
@@ -56,7 +47,7 @@ class _SpecificScreenState extends State<SpecificScreen> {
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(color: Colors.white),
-          title: Text(getDestination(),
+          title: Text(widget.category,
               style:
                   const TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
           backgroundColor: const Color.fromARGB(255, 198, 36, 36),

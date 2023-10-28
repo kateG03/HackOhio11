@@ -167,7 +167,7 @@ class _FloatingActionButtonExampleState
                               context,
                               MaterialPageRoute(
                                   builder: (context) => const SpecificScreen(
-                                        category: 'Food',
+                                        category: 'Stairs',
                                       )));
                         });
                       },
