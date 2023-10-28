@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:MyIndoorNav/UI/search_screen2.dart';
 import 'package:flutter/material.dart';
 
 class StartScreen extends StatefulWidget {
@@ -32,13 +33,28 @@ class _StartScreenState extends State<StartScreen> {
       ])),
       body: Column(
         children: <Widget>[
-          const SearchBar(),
+          Row(
+            children: [
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                const FloatingActionButtonExampleApp()));
+                  },
+                  child: const Icon(Icons.search)),
+              const Expanded(
+                child: SearchBar(),
+              )
+            ],
+          ),
           ListTile(
-              title: const Text('The Ohio State Union'), onTap: () => Navigator.pop(context)),
+              title: const Text('The Ohio State Union'),
+              onTap: () => Navigator.pop(context)),
           ListTile(
               title: const Text('Item 2'), onTap: () => Navigator.pop(context)),
           Center(child: Text('Value: $searchValue')),
-          const Text("this was qr view"),
         ],
       ),
     );
