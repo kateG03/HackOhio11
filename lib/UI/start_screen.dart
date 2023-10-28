@@ -33,11 +33,21 @@ class _StartScreenState extends State<StartScreen> {
       ])),
       body: Column(
         children: <Widget>[
+<<<<<<< HEAD
           
           const SearchBar(),
           
+=======
+          EasySearchBar(
+            title: const Text('Where to?'),
+            onSearch: (value) => setState(() => searchValue = value),
+            actions: [
+              IconButton(icon: const Icon(Icons.person), onPressed: () {})
+            ],
+          ),
+>>>>>>> 00f407f7dee8f1d3f2aa82d10f59341e381cb882
           ListTile(
-              title: const Text('Item 1'), onTap: () => Navigator.pop(context)),
+              title: const Text('The Ohio State Union'), onTap: () => Navigator.pop(context)),
           ListTile(
               title: const Text('Item 2'), onTap: () => Navigator.pop(context)),
           Center(child: Text('Value: $searchValue')),
