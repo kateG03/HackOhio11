@@ -1,47 +1,59 @@
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:easy_search_bar/easy_search_bar.dart';
 
 class StartScreen extends StatefulWidget {
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
-  QRViewController? controller;
-  String dropdownValue = "Option 1";
+  final QRViewController controller;
+  final String dropdownValue = "Option 1";
 
-  StartScreen({super.key});
+  StartScreen({super.key, required this.controller});
 
   @override
   State<StatefulWidget> createState() => _StartScreenState();
 }
 
 class _StartScreenState extends State<StartScreen> {
+  String searchValue = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('QR Scanner & Searchable Dropdown'),
+        title: const Text('QR Scanner & Searchable Dropdown'),
       ),
+      drawer: Drawer(
+          child: ListView(padding: EdgeInsets.zero, children: const [
+        DrawerHeader(
+          decoration: BoxDecoration(
+            color: Colors.blue,
+          ),
+          child: Text('Drawer Header'),
+        )
+      ])),
       body: Column(
         children: <Widget>[
+          EasySearchBar(
+            title: const Text('Example'),
+            onSearch: (value) => setState(() => searchValue = value),
+            actions: [
+              IconButton(icon: const Icon(Icons.person), onPressed: () {})
+            ],
+          ),
+          ListTile(
+              title: const Text('Item 1'), onTap: () => Navigator.pop(context)),
+          ListTile(
+              title: const Text('Item 2'), onTap: () => Navigator.pop(context)),
+          Center(child: Text('Value: $searchValue')),
           Container(
             height: 300, // Adjust the height as needed
             child: QRView(
-              key: qrKey,
+              key: const Key(""),
               onQRViewCreated: (controller) {
-                this.controller = controller;
                 controller.scannedDataStream.listen((scanData) {
                   // Handle scanned QR code data
                 });
               },
             ),
-          ),
-          SearchableDropdown.single(
-            items: ["Option 1", "Option 2", "Option 3"],
-            value: dropdownValue,
-            hint: "Select an option",
-            onChanged: (value) {
-              setState(() {
-                dropdownValue = value;
-              });
-            },
           ),
           Expanded(
             child: ListView(
