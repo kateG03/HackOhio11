@@ -32,7 +32,14 @@ class _StartScreenState extends State<StartScreen> {
       ])),
       body: Column(
         children: <Widget>[
-          const SearchBar(),
+          Row(
+            children: [
+              ElevatedButton(onPressed: () {
+                
+              }, child: const Icon(Icons.search)),
+              const SearchBar(),
+            ],
+          ),
           ListTile(
               title: const Text('The Ohio State Union'), onTap: () => Navigator.pop(context)),
           ListTile(

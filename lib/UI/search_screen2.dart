@@ -35,21 +35,25 @@ class _FloatingActionButtonExampleState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Destination: '),
-      ),
-      body: const Center(child: Text('Press the button below!')),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            index = (index + 1) % customizations.length;
-          });
-        },
-        foregroundColor: customizations[index].$1,
-        backgroundColor: customizations[index].$2,
-        shape: customizations[index].$3,
-        child: const Icon(Icons.navigation),
-      ),
-    );
+        appBar: AppBar(
+          title: const Text('Destination: '),
+        ),
+        body: Column(
+          children: [
+            const SearchBar(),
+            const Center(child: Text('Press the button below!')),
+            FloatingActionButton(
+              onPressed: () {
+                setState(() {
+                  index = (index + 1) % customizations.length;
+                });
+              },
+              foregroundColor: customizations[index].$1,
+              backgroundColor: customizations[index].$2,
+              shape: customizations[index].$3,
+              child: const Icon(Icons.navigation),
+            ),
+          ],
+        ));
   }
 }
