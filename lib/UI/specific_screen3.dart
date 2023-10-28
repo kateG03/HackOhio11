@@ -25,15 +25,15 @@ class _SpecificScreenState extends State<SpecificScreen> {
       return Image.asset(bathroomImages[newPosition]);
     } else if (widget.category == "Stairs") {
       List<String> stairsImages = <String>[
-        "assets/OUBasementSTAIRS.png",
-        "assets/OUFloor1STAIRS.png",
-        "assets/OUFloor2STAIRS.png",
-        "assets/OUFloor3STAIRS.png"
+        "assets/OUBasementBWSTAIRS.png",
+        "assets/OUFloor1BWSTAIRS.png",
+        "assets/OUFloor2BWSTAIRS.png",
+        "assets/OUFloor3BWSTAIRS.png"
       ];
       return Image.asset(stairsImages[newPosition]);
     } else {
       selectedFloor = 1;
-      return Image.asset("assets/OUFloor1EXIT.png");
+      return Image.asset("assets/OUFloor1BWEXIT.png");
     }
   }
 
