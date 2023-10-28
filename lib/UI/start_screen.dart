@@ -24,7 +24,10 @@ class _StartScreenState extends State<StartScreen> {
       ),
       body: Column(
         children: <Widget>[
-          const Divider(height: 30),
+          const Divider(
+            height: 80,
+            color: Color.fromARGB(0, 0, 0, 0),
+          ),
           SizedBox(
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -43,6 +46,27 @@ class _StartScreenState extends State<StartScreen> {
                   },
                 ),
               ])),
+          const Divider(
+            height: 40,
+            color: Color.fromARGB(0, 0, 0, 0),
+          ),
+          const Text("or",
+              style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+              textScaleFactor: 3),
+          const Divider(
+            height: 10,
+            color: Color.fromARGB(0, 0, 0, 0),
+          ),
+          const Text("Scan QR code below:",
+              style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+              textScaleFactor: 1.5),
+          const Divider(
+            height: 80,
+            color: Color.fromARGB(0, 0, 0, 0),
+          ),
+          ElevatedButton(onPressed: () {}, child: const Icon(Icons.photo_camera, size: 24,),
+            style: const ButtonStyle(fixedSize: Size(10), Color.fromARGB(255, 0, 0, 0),
+               )
         ],
       ),
     );
