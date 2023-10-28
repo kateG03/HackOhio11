@@ -76,7 +76,7 @@ class _FloatingActionButtonExampleState
                       foregroundColor: customizations[index].$1,
                       backgroundColor: customizations[index].$2,
                       shape: customizations[index].$3,
-                      child: const Icon(Icons.navigation),
+                      child: const Icon(Icons.wc),
                     ),
                     const Text("Bathrooms")
                   ]),
@@ -91,9 +91,9 @@ class _FloatingActionButtonExampleState
                       foregroundColor: customizations[index].$1,
                       backgroundColor: customizations[index].$2,
                       shape: customizations[index].$3,
-                      child: const Icon(Icons.navigation),
+                      child: const Icon(Icons.fastfood),
                     ),
-                    const Text("Exits")
+                    const Text("Food")
                   ]),
                   Column(children: [
                     FloatingActionButton(
@@ -106,9 +106,9 @@ class _FloatingActionButtonExampleState
                       foregroundColor: customizations[index].$1,
                       backgroundColor: customizations[index].$2,
                       shape: customizations[index].$3,
-                      child: const Icon(Icons.navigation),
+                      child: const Icon(Icons.door_back_door_outlined),
                     ),
-                    const Text("Other")
+                    const Text("Exits")
                   ]),
                 ],
               )
