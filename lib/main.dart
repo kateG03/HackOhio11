@@ -32,7 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 198, 36, 36),
+        backgroundColor: const Color.fromARGB(255, 198, 36, 36),
         title: Text(widget.title),
       ),
       body: StartScreen(),

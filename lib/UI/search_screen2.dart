@@ -61,7 +61,7 @@ class _FloatingActionButtonExampleState
                   )),
               const Divider(height: 25, color: Color.fromARGB(0, 0, 0, 0)),
               const Text("Select the floor you are on currently: "),
-              Text("Select the floor you are on currently: "),
+              const Text("Select the floor you are on currently: "),
             const Divider(height: 5, color: Color.fromARGB(0, 0, 0, 0)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -129,7 +129,7 @@ class _FloatingActionButtonExampleState
               const Divider(height: 18, color: Color.fromARGB(0, 0, 0, 0)),
               Container(height: 400, color: const Color.fromARGB(255, 0, 0, 0)),
               const Divider(
-                  height: 20, color: const Color.fromARGB(0, 0, 0, 0)),
+                  height: 20, color:  Color.fromARGB(0, 0, 0, 0)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
