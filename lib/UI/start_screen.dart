@@ -20,7 +20,7 @@ class _StartScreenState extends State<StartScreen> {
     log("opening...");
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Select the building to navigate:',
+        title: const Text('Select Building:',
             style: TextStyle(fontSize: 18)),
       ),
       drawer: Drawer(
@@ -52,9 +52,7 @@ class _StartScreenState extends State<StartScreen> {
                 ),
               )),
          
-          ListTile(
-              title: const Text('Item 2'), onTap: () => Navigator.pop(context)),
-          Center(child: Text('Value: $searchValue')),
+        
         ],
       ),
     );
