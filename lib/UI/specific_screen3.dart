@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 
 class SpecificScreen extends StatefulWidget {
@@ -36,10 +34,10 @@ class _SpecificScreenState extends State<SpecificScreen> {
   Widget _getHighlightedImage(int newPosition) {
     if (widget.category == "Bathrooms") {
       List<String> bathroomImages = <String>[
-        "assets/OUBasement.png",
-        "assets/OUFloor1.png",
-        "assets/OUFloor2.png",
-        "assets/OUFloor3.png"
+        "assets/OUBasementBW.png",
+        "assets/OUFloor1BW.png",
+        "assets/OUFloor2BW.png",
+        "assets/OUFloor3BW.png"
       ];
       return Image.asset(bathroomImages[newPosition]);
     } else if (widget.category == "Food") {
@@ -143,7 +141,7 @@ class _SpecificScreenState extends State<SpecificScreen> {
               Container(
                   height: 400,
                   color: Color.fromARGB(255, 255, 255, 255),
-                  child: _getImage(selectedFloor)),
+                  child: _getHighlightedImage(selectedFloor)),
               const Divider(height: 20, color: Color.fromARGB(0, 0, 0, 0)),
             ]));
   }
