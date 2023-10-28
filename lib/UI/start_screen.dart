@@ -33,6 +33,7 @@ class _StartScreenState extends State<StartScreen> {
       ])),
       body: Column(
         children: <Widget>[
+          Divider(height: 10),
           SizedBox(
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
