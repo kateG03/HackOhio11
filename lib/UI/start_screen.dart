@@ -1,13 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
-import 'package:qr_code_scanner/qr_code_scanner.dart';
-import 'package:easy_search_bar/easy_search_bar.dart';
 
 class StartScreen extends StatefulWidget {
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
-  final QRViewController controller;
   final String dropdownValue = "Option 1";
 
-  StartScreen({super.key, required this.controller});
+  StartScreen({super.key});
 
   @override
   State<StatefulWidget> createState() => _StartScreenState();
@@ -17,6 +16,7 @@ class _StartScreenState extends State<StartScreen> {
   String searchValue = '';
   @override
   Widget build(BuildContext context) {
+    log("opening...");
     return Scaffold(
       appBar: AppBar(
         title: const Text('QR Scanner & Searchable Dropdown'),
@@ -32,48 +32,13 @@ class _StartScreenState extends State<StartScreen> {
       ])),
       body: Column(
         children: <Widget>[
-          EasySearchBar(
-            title: const Text('Example'),
-            onSearch: (value) => setState(() => searchValue = value),
-            actions: [
-              IconButton(icon: const Icon(Icons.person), onPressed: () {})
-            ],
-          ),
+          const SearchBar(),
           ListTile(
-              title: const Text('Item 1'), onTap: () => Navigator.pop(context)),
+              title: const Text('The Ohio State Union'), onTap: () => Navigator.pop(context)),
           ListTile(
               title: const Text('Item 2'), onTap: () => Navigator.pop(context)),
           Center(child: Text('Value: $searchValue')),
-          Container(
-            height: 300, // Adjust the height as needed
-            child: QRView(
-              key: const Key(""),
-              onQRViewCreated: (controller) {
-                controller.scannedDataStream.listen((scanData) {
-                  // Handle scanned QR code data
-                });
-              },
-            ),
-          ),
-          Expanded(
-            child: ListView(
-              children: <Widget>[
-                ListTile(
-                  title: Text("Item 1"),
-                  onTap: () {
-                    // Handle item selection
-                  },
-                ),
-                ListTile(
-                  title: Text("Item 2"),
-                  onTap: () {
-                    // Handle item selection
-                  },
-                ),
-                // Add more list items as needed
-              ],
-            ),
-          ),
+          const Text("this was qr view"),
         ],
       ),
     );
