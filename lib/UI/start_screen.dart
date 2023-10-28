@@ -21,6 +21,7 @@ class _StartScreenState extends State<StartScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Select Building:', style: TextStyle(fontSize: 18)),
+        backgroundColor: Color.fromARGB(255, 97, 96, 93),
       ),
       drawer: Drawer(
           child: ListView(padding: EdgeInsets.zero, children: const [
