@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 class FloatingActionButtonExampleApp extends StatelessWidget {
@@ -22,16 +24,19 @@ class FloatingActionButtonExample extends StatefulWidget {
 
 class _FloatingActionButtonExampleState
     extends State<FloatingActionButtonExample> {
-  // The FAB's foregroundColor, backgroundColor, and shape
-  static const List<(Color?, Color? background, ShapeBorder?)> customizations =
-      <(Color?, Color?, ShapeBorder?)>[
-    (null, null, null), // The FAB uses its default for null parameters.
-    (null, Colors.green, null),
-    (Colors.white, Colors.green, null),
-    (Colors.white, Colors.green, CircleBorder()),
-  ];
-  int index = 0; // Selects the customization.
+  Widget _getImage(int newPosition) {
+    log("newPosition: $newPosition");
+    List<String> images = <String>[
+      "assets/OUBasement.png",
+      "assets/OUFloor1.png",
+      "assets/OUFloor2.png",
+      "assets/OUFloor3.png"
+    ];
+    return Image.asset(images[newPosition]);
+  }
 
+  Color selectedFloorColor = Colors.white;
+  int selectedFloor = 1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,93 +48,84 @@ class _FloatingActionButtonExampleState
             children: [
               SizedBox(
                   height: 50,
-                  child: Expanded(
-                    child: DropdownMenu(
-                      leadingIcon: const Icon(Icons.search),
-                      dropdownMenuEntries: const [
-                        DropdownMenuEntry(
-                            value: 0, label: "The Ohio State Union")
-                      ],
-                      onSelected: (value) {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const FloatingActionButtonExampleApp()));
-                      },
-                    ),
+                  child: DropdownMenu(
+                    leadingIcon: const Icon(Icons.search),
+                    dropdownMenuEntries: const [
+                      DropdownMenuEntry(value: 0, label: "The Ohio State Union")
+                    ],
+                    onSelected: (value) {
+                      //spot to set the destination
+                    },
                   )),
               const Divider(height: 25, color: Color.fromARGB(0, 0, 0, 0)),
               const Text("Select the floor you are on currently: "),
-              const Text("Select the floor you are on currently: "),
-            const Divider(height: 5, color: Color.fromARGB(0, 0, 0, 0)),
+              const Divider(height: 5, color: Color.fromARGB(0, 0, 0, 0)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Column(children: [
-                    FloatingActionButton(
-
-                        heroTag: "btn8",
-                        onPressed: () {
-                          setState(() {
-                            index = (index + 1) % customizations.length;
-                          });
-                        },
-                        foregroundColor: customizations[index].$1,
-                        backgroundColor: customizations[index].$2,
-                        shape: customizations[index].$3,
-                        child: const Text("B")
-                        )
-                  ]),
-                  Column(children: [
-                    FloatingActionButton(
-                      heroTag: "btn5",
+                  FloatingActionButton(
+                      heroTag: "btn8",
+                      backgroundColor: selectedFloor == 0
+                          ? selectedFloorColor
+                          : Theme.of(context)
+                              .floatingActionButtonTheme
+                              .backgroundColor,
                       onPressed: () {
                         setState(() {
-                          index = (index + 1) % customizations.length;
+                          selectedFloor = 0;
                         });
                       },
-                      foregroundColor: customizations[index].$1,
-                      backgroundColor: customizations[index].$2,
-                      shape: customizations[index].$3,
-                      child: const Text("1"),
-                    ),
-                  ]),
-                  Column(children: [
-                    FloatingActionButton(
-                      heroTag: "btn6",
-                      onPressed: () {
-                        setState(() {
-                          index = (index + 1) % customizations.length;
-                        });
-                      },
-                      foregroundColor: customizations[index].$1,
-                      backgroundColor: customizations[index].$2,
-                      shape: customizations[index].$3,
-                      child: const Text("2"),
-                    ),
-                  ]),
-                  Column(children: [
-                    FloatingActionButton(
-                      heroTag: "btn7",
-                      onPressed: () {
-                        setState(() {
-                          index = (index + 1) % customizations.length;
-                        });
-                      },
-                      foregroundColor: customizations[index].$1,
-                      backgroundColor: customizations[index].$2,
-                      shape: customizations[index].$3,
-                      child: const Text("3"),
-                    ),
-                  ]),
+                      child: const Text("B")),
+                  FloatingActionButton(
+                    heroTag: "btn5",
+                    backgroundColor: selectedFloor == 1
+                        ? selectedFloorColor
+                        : Theme.of(context)
+                            .floatingActionButtonTheme
+                            .backgroundColor,
+                    onPressed: () {
+                      setState(() {
+                        selectedFloor = 1;
+                      });
+                    },
+                    child: const Text("1"),
+                  ),
+                  FloatingActionButton(
+                    heroTag: "btn6",
+                    backgroundColor: selectedFloor == 2
+                        ? selectedFloorColor
+                        : Theme.of(context)
+                            .floatingActionButtonTheme
+                            .backgroundColor,
+                    onPressed: () {
+                      setState(() {
+                        selectedFloor = 2;
+                      });
+                    },
+                    child: const Text("2"),
+                  ),
+                  FloatingActionButton(
+                    heroTag: "btn7",
+                    backgroundColor: selectedFloor == 3
+                        ? selectedFloorColor
+                        : Theme.of(context)
+                            .floatingActionButtonTheme
+                            .backgroundColor,
+                    onPressed: () {
+                      setState(() {
+                        selectedFloor = 3;
+                      });
+                    },
+                    child: const Text("3"),
+                  ),
                 ],
               ),
-              
               const Divider(height: 18, color: Color.fromARGB(0, 0, 0, 0)),
-              Container(height: 400, color: const Color.fromARGB(255, 0, 0, 0)),
-              const Divider(
-                  height: 20, color:  Color.fromARGB(0, 0, 0, 0)),
+              Container(
+                  height: 400,
+                  color: const Color.fromARGB(255, 0, 0, 0),
+                  child: _getImage(selectedFloor)),
+              const Divider(height: 20, color: Color.fromARGB(0, 0, 0, 0)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -137,13 +133,8 @@ class _FloatingActionButtonExampleState
                     FloatingActionButton(
                       heroTag: "btn1",
                       onPressed: () {
-                        setState(() {
-                          index = (index + 1) % customizations.length;
-                        });
+                        setState(() {});
                       },
-                      foregroundColor: customizations[index].$1,
-                      backgroundColor: customizations[index].$2,
-                      shape: customizations[index].$3,
                       child: const Icon(Icons.wc),
                     ),
                     const Text("Bathrooms")
@@ -152,13 +143,8 @@ class _FloatingActionButtonExampleState
                     FloatingActionButton(
                       heroTag: "btn2",
                       onPressed: () {
-                        setState(() {
-                          index = (index + 1) % customizations.length;
-                        });
+                        setState(() {});
                       },
-                      foregroundColor: customizations[index].$1,
-                      backgroundColor: customizations[index].$2,
-                      shape: customizations[index].$3,
                       child: const Icon(Icons.fastfood),
                     ),
                     const Text("Food")
@@ -167,13 +153,8 @@ class _FloatingActionButtonExampleState
                     FloatingActionButton(
                       heroTag: "btn3",
                       onPressed: () {
-                        setState(() {
-                          index = (index + 1) % customizations.length;
-                        });
+                        setState(() {});
                       },
-                      foregroundColor: customizations[index].$1,
-                      backgroundColor: customizations[index].$2,
-                      shape: customizations[index].$3,
                       child: const Icon(Icons.door_back_door_outlined),
                     ),
                     const Text("Exits")
