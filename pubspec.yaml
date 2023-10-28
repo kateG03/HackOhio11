@@ -38,6 +38,7 @@ dependencies:
   flutter_dropdown: ^1.0.1+hotfix.1
   qr_code_scanner: ^1.0.1
   easy_search_bar: ^2.5.0
+  geolocator: ^10.1.0
 
 dev_dependencies:
   flutter_test:
