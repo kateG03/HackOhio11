@@ -27,9 +27,8 @@ void main() {
     //node five connections
     messyNode5.addConnection(messyNode4);
 
-    messyTree.head = messyNode;
-    List<MessyNode> list = messyTree.getPaths(messyNode, messyNode5, messyNode);
-    
-    expect(1, 1);
+    List<MessyNode> list = messyTree.test(messyNode, messyNode5, messyNode);
+
+    expect(list.length, 5);
   });
 }

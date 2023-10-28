@@ -81,7 +81,9 @@ class _FloatingActionButtonExampleState
                           selectedFloor = 0;
                         });
                       },
-                      child: const Text("B", style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)))),
+                      child: const Text("B",
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 255, 255, 255)))),
                   FloatingActionButton(
                     heroTag: "btn5",
                     backgroundColor: selectedFloor == 1
@@ -92,7 +94,9 @@ class _FloatingActionButtonExampleState
                         selectedFloor = 1;
                       });
                     },
-                    child: const Text("1", style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
+                    child: const Text("1",
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 255, 255, 255))),
                   ),
                   FloatingActionButton(
                     heroTag: "btn6",
@@ -104,7 +108,9 @@ class _FloatingActionButtonExampleState
                         selectedFloor = 2;
                       });
                     },
-                    child: const Text("2", style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
+                    child: const Text("2",
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 255, 255, 255))),
                   ),
                   FloatingActionButton(
                     heroTag: "btn7",
@@ -116,7 +122,9 @@ class _FloatingActionButtonExampleState
                         selectedFloor = 3;
                       });
                     },
-                    child: const Text("3", style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
+                    child: const Text("3",
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 255, 255, 255))),
                   ),
                 ],
               ),
@@ -131,6 +139,7 @@ class _FloatingActionButtonExampleState
                 children: [
                   Column(children: [
                     FloatingActionButton(
+                      backgroundColor: const Color.fromARGB(255, 198, 38, 38),
                       heroTag: "btn1",
                       onPressed: () {
                         setState(() {
@@ -142,12 +151,15 @@ class _FloatingActionButtonExampleState
                                       )));
                         });
                       },
-                      child: const Icon(Icons.wc),
+                      child: const Icon(Icons.wc, color: Colors.white, size: 35,),
                     ),
+                    const Divider(
+                        height: 10, color: Color.fromARGB(0, 0, 0, 0)),
                     const Text("Bathrooms")
                   ]),
                   Column(children: [
                     FloatingActionButton(
+                      backgroundColor: const Color.fromARGB(255, 198, 38, 38),
                       heroTag: "btn2",
                       onPressed: () {
                         setState(() {
@@ -156,28 +168,32 @@ class _FloatingActionButtonExampleState
                               MaterialPageRoute(
                                   builder: (context) => const SpecificScreen(
                                         category: 'Food',
-                                  )));
+                                      )));
                         });
                       },
-                      child: const Icon(Icons.fastfood),
+                      child: const Icon(Icons.stairs_rounded, color: Colors.white, size: 35,),
                     ),
-                    const Text("Food")
+                    const Divider(height: 10, color: Color.fromARGB(0, 0, 0, 0)),
+                    const Text("Stairs")
                   ]),
                   Column(children: [
                     FloatingActionButton(
+                      backgroundColor: const Color.fromARGB(255, 198, 38, 38),
                       heroTag: "btn3",
                       onPressed: () {
                         setState(() {
-                            Navigator.push(
+                          Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => const SpecificScreen(
                                         category: 'Exits',
-                                  )));
+                                      )));
                         });
                       },
-                      child: const Icon(Icons.door_back_door_outlined),
+                      child: const Icon(Icons.door_back_door_outlined, color: Colors.white, size: 35,),
                     ),
+                    const Divider(
+                        height: 10, color: Color.fromARGB(0, 0, 0, 0)),
                     const Text("Exits")
                   ]),
                 ],
