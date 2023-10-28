@@ -27,7 +27,8 @@ class MessyTree {
     else
     {
       for(MessyNode n in start.connections){
-        getPath(n, end);
+        path=getPath(n, end);
+        path.insert(0,start);
       }
     }
     return path;
