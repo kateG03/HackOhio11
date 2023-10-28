@@ -64,9 +64,9 @@ class _StartScreenState extends State<StartScreen> {
             height: 80,
             color: Color.fromARGB(0, 0, 0, 0),
           ),
-          ElevatedButton(
-            style: const ButtonStyle(),
-              onPressed: () {}, child: const Icon(Icons.photo_camera, size: 24,), )
+          ElevatedButton(onPressed: () {}, child: const Icon(Icons.photo_camera, size: 24,),
+            style: const ButtonStyle(fixedSize: Size(10), Color.fromARGB(255, 0, 0, 0),
+               )
         ],
       ),
     );
