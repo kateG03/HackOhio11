@@ -6,10 +6,10 @@ class RoomNode {
 String name;
 String? number;
 //Position position;
-double longitude;
 double latitude;
+double longitude;
 
-  RoomNode({required this.name, this.number, required this.longitude, required this.latitude});
+  RoomNode({required this.name, this.number, required this.latitude, required this.longitude});
 
 }
 
