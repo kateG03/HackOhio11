@@ -59,6 +59,68 @@ class _FloatingActionButtonExampleState
                       },
                     ),
                   )),
+               Row (
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                    Column(children: [
+                    FloatingActionButton(
+                      heroTag: "btn8",
+                      onPressed: () {
+                        setState(() {
+                          index = (index + 1) % customizations.length;
+                        });
+                      },
+                      foregroundColor: customizations[index].$1,
+                      backgroundColor: customizations[index].$2,
+                      shape: customizations[index].$3,
+                      child: const Icon(Icons.wc),
+                    )]),
+                  Column(children: [
+                    FloatingActionButton(
+                      heroTag: "btn5",
+                      onPressed: () {
+                        setState(() {
+                          index = (index + 1) % customizations.length;
+                        });
+                      },
+                      foregroundColor: customizations[index].$1,
+                      backgroundColor: customizations[index].$2,
+                      shape: customizations[index].$3,
+                      child: const Icon(Icons.wc),
+                    ),
+                  ]),
+                  Column(children: [
+                    FloatingActionButton(
+                      heroTag: "btn6",
+                      onPressed: () {
+                        setState(() {
+                          index = (index + 1) % customizations.length;
+                        });
+                      },
+                      foregroundColor: customizations[index].$1,
+                      backgroundColor: customizations[index].$2,
+                      shape: customizations[index].$3,
+                      child: const Icon(Icons.fastfood),
+                    ),
+                  ]),
+                  Column(children: [
+                    FloatingActionButton(
+                      heroTag: "btn7",
+                      onPressed: () {
+                        setState(() {
+                          index = (index + 1) % customizations.length;
+                        });
+                      },
+                      foregroundColor: customizations[index].$1,
+                      backgroundColor: customizations[index].$2,
+                      shape: customizations[index].$3,
+                      child: const Icon(Icons.door_back_door_outlined),
+                    ),
+
+                  ]),
+                ],
+
+    )],),
                Divider(height: 70, color: const Color.fromARGB(0, 0, 0, 0)),
                Container(height: 400, color: const Color.fromARGB(255, 0, 0, 0)),
                Divider(height: 30, color: const Color.fromARGB(0, 0, 0, 0)),
@@ -76,7 +138,7 @@ class _FloatingActionButtonExampleState
                       foregroundColor: customizations[index].$1,
                       backgroundColor: customizations[index].$2,
                       shape: customizations[index].$3,
-                      child: const Icon(Icons.navigation),
+                      child: const Icon(Icons.wc),
                     ),
                     const Text("Bathrooms")
                   ]),
@@ -91,9 +153,9 @@ class _FloatingActionButtonExampleState
                       foregroundColor: customizations[index].$1,
                       backgroundColor: customizations[index].$2,
                       shape: customizations[index].$3,
-                      child: const Icon(Icons.navigation),
+                      child: const Icon(Icons.fastfood),
                     ),
-                    const Text("Exits")
+                    const Text("Food")
                   ]),
                   Column(children: [
                     FloatingActionButton(
@@ -106,9 +168,9 @@ class _FloatingActionButtonExampleState
                       foregroundColor: customizations[index].$1,
                       backgroundColor: customizations[index].$2,
                       shape: customizations[index].$3,
-                      child: const Icon(Icons.navigation),
+                      child: const Icon(Icons.door_back_door_outlined),
                     ),
-                    const Text("Other")
+                    const Text("Exits")
                   ]),
                 ],
               )
