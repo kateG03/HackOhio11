@@ -72,10 +72,10 @@ class _StartScreenState extends State<StartScreen> {
             onPressed: () {},
             style: ElevatedButton.styleFrom(
               backgroundColor:
-                  Color.fromARGB(255, 198, 36, 36), // background (button) color
+                  const Color.fromARGB(255, 198, 36, 36), // background (button) color
               foregroundColor: Colors.white, // foreground (text) color
-              fixedSize: Size.fromRadius(50),
-              shape: CircleBorder()
+              fixedSize: const Size.fromRadius(50),
+              shape: const CircleBorder()
             ),
             child: const Icon(
               Icons.photo_camera,
