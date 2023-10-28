@@ -64,6 +64,7 @@ class _SpecificScreenState extends State<SpecificScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          iconTheme: IconThemeData(color: Colors.white),
           title: Text(getDestination(),
               style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
           backgroundColor: const Color.fromARGB(255, 198, 36, 36),
@@ -91,7 +92,7 @@ class _SpecificScreenState extends State<SpecificScreen> {
                           selectedFloor = 0;
                         });
                       },
-                      child: const Text("B", style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)))),
+                      child: const Text("B", style: TextStyle(color: Color.fromARGB(255, 255, 255, 255), fontSize: 20))),
                   FloatingActionButton(
                     heroTag: "btn5",
                     backgroundColor: selectedFloor == 1
@@ -102,7 +103,7 @@ class _SpecificScreenState extends State<SpecificScreen> {
                         selectedFloor = 1;
                       });
                     },
-                    child: const Text("1", style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
+                    child: const Text("1", style: TextStyle(color: Color.fromARGB(255, 255, 255, 255), fontSize: 20)),
                   ),
                   FloatingActionButton(
                     heroTag: "btn6",
@@ -114,7 +115,7 @@ class _SpecificScreenState extends State<SpecificScreen> {
                         selectedFloor = 2;
                       });
                     },
-                    child: const Text("2", style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
+                    child: const Text("2", style: TextStyle(color: Color.fromARGB(255, 255, 255, 255), fontSize: 20)),
                   ),
                   FloatingActionButton(
                     heroTag: "btn7",
@@ -126,7 +127,7 @@ class _SpecificScreenState extends State<SpecificScreen> {
                         selectedFloor = 3;
                       });
                     },
-                    child: const Text("3", style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
+                    child: const Text("3", style: TextStyle(color: Color.fromARGB(255, 255, 255, 255), fontSize: 20)),
                   ),
                 ],
               ),
@@ -137,7 +138,11 @@ class _SpecificScreenState extends State<SpecificScreen> {
                   child: _getHighlightedImage(selectedFloor)),
                   //color: const  Color.fromARGB(255, 255, 255, 255),
                   //child: _getImage(selectedFloor)),
-              const Divider(height: 20, color: Color.fromARGB(0, 0, 0, 0)),
+              const Divider(height: 40, color: Color.fromARGB(0, 0, 0, 0)),
+              Container(
+                height: 121,
+                color: const Color.fromARGB(255, 198, 36, 36)
+              )
             ]));
   }
 }

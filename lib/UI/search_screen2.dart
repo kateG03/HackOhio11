@@ -81,7 +81,7 @@ class _FloatingActionButtonExampleState
                           selectedFloor = 0;
                         });
                       },
-                      child: const Text("B", style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)))),
+                      child: const Text("B", style: TextStyle(color: Color.fromARGB(255, 255, 255, 255), fontSize: 20))),
                   FloatingActionButton(
                     heroTag: "btn5",
                     backgroundColor: selectedFloor == 1
@@ -92,7 +92,7 @@ class _FloatingActionButtonExampleState
                         selectedFloor = 1;
                       });
                     },
-                    child: const Text("1", style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
+                    child: const Text("1", style: TextStyle(color: Color.fromARGB(255, 255, 255, 255), fontSize: 20)),
                   ),
                   FloatingActionButton(
                     heroTag: "btn6",
@@ -104,7 +104,7 @@ class _FloatingActionButtonExampleState
                         selectedFloor = 2;
                       });
                     },
-                    child: const Text("2", style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
+                    child: const Text("2", style: TextStyle(color: Color.fromARGB(255, 255, 255, 255), fontSize: 20)),
                   ),
                   FloatingActionButton(
                     heroTag: "btn7",
@@ -116,7 +116,7 @@ class _FloatingActionButtonExampleState
                         selectedFloor = 3;
                       });
                     },
-                    child: const Text("3", style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
+                    child: const Text("3", style: TextStyle(color: Color.fromARGB(255, 255, 255, 255), fontSize: 20)),
                   ),
                 ],
               ),
@@ -143,7 +143,7 @@ class _FloatingActionButtonExampleState
                                       )));
                         });
                       },
-                      child: const Icon(Icons.wc, color: Colors.white),
+                      child: const Icon(Icons.wc, color: Colors.white, size: 35,),
                     ),
                     const Divider(height: 10, color: Color.fromARGB(0, 0, 0, 0)),
                     const Text("Bathrooms")
@@ -162,10 +162,10 @@ class _FloatingActionButtonExampleState
                                   )));
                         });
                       },
-                      child: const Icon(Icons.fastfood, color: Colors.white),
+                      child: const Icon(Icons.stairs_rounded, color: Colors.white, size: 35,),
                     ),
                     const Divider(height: 10, color: Color.fromARGB(0, 0, 0, 0)),
-                    const Text("Food")
+                    const Text("Stairs")
                   ]),
                   Column(children: [
                     FloatingActionButton(
@@ -181,7 +181,7 @@ class _FloatingActionButtonExampleState
                                   )));
                         });
                       },
-                      child: const Icon(Icons.door_back_door_outlined, color: Colors.white),
+                      child: const Icon(Icons.door_back_door_outlined, color: Colors.white, size: 35,),
                     ),
                     const Divider(height: 10, color: Color.fromARGB(0, 0, 0, 0)),
                     const Text("Exits")
