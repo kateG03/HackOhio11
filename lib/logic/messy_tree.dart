@@ -1,9 +1,9 @@
 class MessyNode {
-  var Data;
-  List<MessyNode> Connections;
+  var data = Null;
+  List<MessyNode> connections = List.empty(growable: true);
 
   bool isConnected(MessyNode node) {
-    return Connections.contains(node);
+    return connections.contains(node);
   }
 }
 
