@@ -2,16 +2,30 @@ import 'package:geolocator/geolocator.dart';
 //List<String> directions = <String>[];
 //directions.insert("Go from")
 
-class RoomNode
-{
-final String name;
-final int number;
-final Position position;
+class RoomNode {
+String name;
+String? number;
+//Position position;
+double longitude;
+double latitude;
 
-  RoomNode({required this.name, required this.number});
+  RoomNode({required this.name, this.number, required this.longitude, required this.latitude});
 
 }
 
-var rooms = new Map();
-rooms[1050]="Performance Hall";
+RoomNode Sloopy = RoomNode(
+  name: "Sloopy's Diner", 
+  longitude: 39.997466, 
+  latitude: -83.008996
+);
+
+RoomNode Archie = RoomNode(
+  name: "Archie M. Griffin Grand Ballroom", 
+  longitude: 39.997853, 
+  latitude: -83.008483
+);
+
+
+//var rooms = new Map();
+//rooms[1050]="Performance Hall";
  
