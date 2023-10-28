@@ -61,13 +61,13 @@ class _FloatingActionButtonExampleState
                   )),
               const Divider(height: 25, color: Color.fromARGB(0, 0, 0, 0)),
               Text("Select the floor you are on currently: "),
-            
+            const Divider(height: 5, color: Color.fromARGB(0, 0, 0, 0)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Column(children: [
                     FloatingActionButton(
-                        
+
                         heroTag: "btn8",
                         onPressed: () {
                           setState(() {
@@ -77,7 +77,7 @@ class _FloatingActionButtonExampleState
                         foregroundColor: customizations[index].$1,
                         backgroundColor: customizations[index].$2,
                         shape: customizations[index].$3,
-                        child: const Text("1")
+                        child: const Text("B")
                         )
                   ]),
                   Column(children: [
@@ -91,7 +91,7 @@ class _FloatingActionButtonExampleState
                       foregroundColor: customizations[index].$1,
                       backgroundColor: customizations[index].$2,
                       shape: customizations[index].$3,
-                      child: const Icon(Icons.wc),
+                      child: const Text("1"),
                     ),
                   ]),
                   Column(children: [
@@ -105,7 +105,7 @@ class _FloatingActionButtonExampleState
                       foregroundColor: customizations[index].$1,
                       backgroundColor: customizations[index].$2,
                       shape: customizations[index].$3,
-                      child: const Icon(Icons.fastfood),
+                      child: const Text("2"),
                     ),
                   ]),
                   Column(children: [
@@ -119,16 +119,16 @@ class _FloatingActionButtonExampleState
                       foregroundColor: customizations[index].$1,
                       backgroundColor: customizations[index].$2,
                       shape: customizations[index].$3,
-                      child: const Icon(Icons.door_back_door_outlined),
+                      child: const Text("3"),
                     ),
                   ]),
                 ],
               ),
               
-              const Divider(height: 40, color: Color.fromARGB(0, 0, 0, 0)),
+              const Divider(height: 18, color: Color.fromARGB(0, 0, 0, 0)),
               Container(height: 400, color: const Color.fromARGB(255, 0, 0, 0)),
               const Divider(
-                  height: 30, color: const Color.fromARGB(0, 0, 0, 0)),
+                  height: 20, color: const Color.fromARGB(0, 0, 0, 0)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
