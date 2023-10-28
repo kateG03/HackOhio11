@@ -1,3 +1,4 @@
+import 'package:MyIndoorNav/UI/start_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -29,7 +30,8 @@ class MyApp extends StatelessWidget {
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
 
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 255, 255, 255)),
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color.fromARGB(255, 255, 255, 255)),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'MyIndoorNav'),
@@ -106,6 +108,15 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => StartScreen()),
+                );
+              },
+              child: const Text('Elevated Button'),
+            ),
             const Text(
               'You have pushed the button this many times:',
             ),
