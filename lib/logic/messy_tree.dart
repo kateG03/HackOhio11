@@ -19,15 +19,14 @@ class MessyTree {
   MessyNode head = MessyNode(latitude: 0, longitude: 0);
 
   List<MessyNode> getPath(MessyNode start, MessyNode end) {
-    List<MessyNode> path = [];
+    List<MessyNode> path = List.empty(growable: true);
+    
     if (start.isConnected(end)) {
       path = [start, end];
-    }
-    else
-    {
-      for(MessyNode n in start.connections){
-        path=getPath(n, end);
-        path.insert(0,start);
+    } else {
+      for (MessyNode n in start.connections) {
+        path = getPath(n, end);
+        path.insert(0, start);
       }
     }
     return path;
