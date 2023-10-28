@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 class SpecificScreen extends StatefulWidget {
@@ -20,12 +22,50 @@ class _SpecificScreenState extends State<SpecificScreen> {
     ];
     return Image.asset(images[newPosition]);
   }
-  
+
+  String getDestination() {
+    if (widget.category == "Bathrooms") {
+      return "Bathrooms";
+    } else if (widget.category == "Food") {
+      return "Food";
+    } else {
+      return "Exits";
+    }
+  }
+
+  Widget _getHighlightedImage(int newPosition) {
+    if (widget.category == "Bathrooms") {
+      List<String> bathroomImages = <String>[
+        "assets/OUBasement.png",
+        "assets/OUFloor1.png",
+        "assets/OUFloor2.png",
+        "assets/OUFloor3.png"
+      ];
+      return Image.asset(bathroomImages[newPosition]);
+    } else if (widget.category == "Food") {
+      List<String> foodImages = <String>[
+        "assets/OUBasement.png",
+        "assets/OUFloor1.png",
+        "assets/OUFloor2.png",
+        "assets/OUFloor3.png"
+      ];
+      return Image.asset(foodImages[newPosition]);
+    } else {
+      List<String> exitImages = <String>[
+        "assets/OUBasement.png",
+        "assets/OUFloor1.png",
+        "assets/OUFloor2.png",
+        "assets/OUFloor3.png"
+      ];
+      return Image.asset(exitImages[newPosition]);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Destination: ',
+          title: Text(getDestination(),
               style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
           backgroundColor: const Color.fromARGB(255, 198, 36, 36),
         ),
