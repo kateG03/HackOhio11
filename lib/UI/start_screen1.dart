@@ -5,7 +5,7 @@ import 'package:easy_search_bar/easy_search_bar.dart';
 class StartScreen extends StatefulWidget {
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
   final QRViewController controller;
-  final String dropdownValue = "Option 1";
+  final String dropdownValue = "The Ohio State Union";
 
   StartScreen({super.key, required this.controller});
 
@@ -33,14 +33,14 @@ class _StartScreenState extends State<StartScreen> {
       body: Column(
         children: <Widget>[
           EasySearchBar(
-            title: const Text('Example'),
+            title: const Text('Where to?'),
             onSearch: (value) => setState(() => searchValue = value),
             actions: [
               IconButton(icon: const Icon(Icons.person), onPressed: () {})
             ],
           ),
           ListTile(
-              title: const Text('Item 1'), onTap: () => Navigator.pop(context)),
+              title: const Text('The Ohio State Union'), onTap: () => Navigator.pop(context)),
           ListTile(
               title: const Text('Item 2'), onTap: () => Navigator.pop(context)),
           Center(child: Text('Value: $searchValue')),
