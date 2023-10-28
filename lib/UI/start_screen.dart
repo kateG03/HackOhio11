@@ -14,9 +14,6 @@ class StartScreen extends StatefulWidget {
 }
 
 class _StartScreenState extends State<StartScreen> {
-
-
-  
   String searchValue = '';
   @override
   Widget build(BuildContext context) {
@@ -71,12 +68,11 @@ class _StartScreenState extends State<StartScreen> {
           ElevatedButton(
             onPressed: () {},
             style: ElevatedButton.styleFrom(
-              backgroundColor:
-                  const Color.fromARGB(255, 198, 36, 36), // background (button) color
-              foregroundColor: Colors.white, // foreground (text) color
-              fixedSize: const Size.fromRadius(50),
-              shape: const CircleBorder()
-            ),
+                backgroundColor: const Color.fromARGB(
+                    255, 198, 36, 36), // background (button) color
+                foregroundColor: Colors.white, // foreground (text) color
+                fixedSize: const Size.fromRadius(50),
+                shape: const CircleBorder()),
             child: const Icon(
               Icons.photo_camera,
               size: 50,
