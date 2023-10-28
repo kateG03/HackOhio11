@@ -20,7 +20,8 @@ class _StartScreenState extends State<StartScreen> {
     log("opening...");
     return Scaffold(
       appBar: AppBar(
-        title: const Text('QR Scanner & Searchable Dropdown'),
+        title: const Text('Select the building to navigate:',
+            style: TextStyle(fontSize: 18)),
       ),
       drawer: Drawer(
           child: ListView(padding: EdgeInsets.zero, children: const [
@@ -33,25 +34,24 @@ class _StartScreenState extends State<StartScreen> {
       ])),
       body: Column(
         children: <Widget>[
-          Row(
-            children: [
-              ElevatedButton(
-                  onPressed: () {
+          SizedBox(
+              height: 50,
+              child: Expanded(
+                child: DropdownMenu(
+                  leadingIcon: const Icon(Icons.search),
+                  dropdownMenuEntries: const [
+                    DropdownMenuEntry(value: 0, label: "The Ohio State Union")
+                  ],
+                  onSelected: (value) {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) =>
                                 const FloatingActionButtonExampleApp()));
                   },
-                  child: const Icon(Icons.search)),
-              const Expanded(
-                child: SearchBar(),
-              )
-            ],
-          ),
-          ListTile(
-              title: const Text('The Ohio State Union'),
-              onTap: () => Navigator.pop(context)),
+                ),
+              )),
+         
           ListTile(
               title: const Text('Item 2'), onTap: () => Navigator.pop(context)),
           Center(child: Text('Value: $searchValue')),

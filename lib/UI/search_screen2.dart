@@ -38,57 +38,80 @@ class _FloatingActionButtonExampleState
         appBar: AppBar(
           title: const Text('Destination: '),
         ),
-        body: Column(children: [
-          const SearchBar(),
-          Row(
+        body: Column(
+            //mainAxisAlignment: MainAxisAlignment,
             children: [
-              Column(children: [
-                FloatingActionButton(
-                  heroTag: "btn1",
-                  onPressed: () {
-                    setState(() {
-                      index = (index + 1) % customizations.length;
-                    });
-                  },
-                  foregroundColor: customizations[index].$1,
-                  backgroundColor: customizations[index].$2,
-                  shape: customizations[index].$3,
-                  child: const Icon(Icons.navigation),
-                ),
-                const Text("Bathrooms")
-              ]),
-              Column(children: [
-                FloatingActionButton(
-                  heroTag: "btn2",
-                  onPressed: () {
-                    setState(() {
-                      index = (index + 1) % customizations.length;
-                    });
-                  },
-                  foregroundColor: customizations[index].$1,
-                  backgroundColor: customizations[index].$2,
-                  shape: customizations[index].$3,
-                  child: const Icon(Icons.navigation),
-                ),
-                const Text("Exits")
-              ]),
-              Column(children: [
-                FloatingActionButton(
-                  heroTag: "btn3",
-                  onPressed: () {
-                    setState(() {
-                      index = (index + 1) % customizations.length;
-                    });
-                  },
-                  foregroundColor: customizations[index].$1,
-                  backgroundColor: customizations[index].$2,
-                  shape: customizations[index].$3,
-                  child: const Icon(Icons.navigation),
-                ),
-                const Text("Other")
-              ]),
-            ],
-          )
-        ]));
+              SizedBox(
+                  height: 50,
+                  child: Expanded(
+                    child: DropdownMenu(
+                      leadingIcon: const Icon(Icons.search),
+                      dropdownMenuEntries: const [
+                        DropdownMenuEntry(
+                            value: 0, label: "The Ohio State Union")
+                      ],
+                      onSelected: (value) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const FloatingActionButtonExampleApp()));
+                      },
+                    ),
+                  )),
+               Divider(height: 70, color: const Color.fromARGB(0, 0, 0, 0)),
+               Container(height: 400, color: const Color.fromARGB(255, 0, 0, 0)),
+               Divider(height: 30, color: const Color.fromARGB(0, 0, 0, 0)),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Column(children: [
+                    FloatingActionButton(
+                      heroTag: "btn1",
+                      onPressed: () {
+                        setState(() {
+                          index = (index + 1) % customizations.length;
+                        });
+                      },
+                      foregroundColor: customizations[index].$1,
+                      backgroundColor: customizations[index].$2,
+                      shape: customizations[index].$3,
+                      child: const Icon(Icons.navigation),
+                    ),
+                    const Text("Bathrooms")
+                  ]),
+                  Column(children: [
+                    FloatingActionButton(
+                      heroTag: "btn2",
+                      onPressed: () {
+                        setState(() {
+                          index = (index + 1) % customizations.length;
+                        });
+                      },
+                      foregroundColor: customizations[index].$1,
+                      backgroundColor: customizations[index].$2,
+                      shape: customizations[index].$3,
+                      child: const Icon(Icons.navigation),
+                    ),
+                    const Text("Exits")
+                  ]),
+                  Column(children: [
+                    FloatingActionButton(
+                      heroTag: "btn3",
+                      onPressed: () {
+                        setState(() {
+                          index = (index + 1) % customizations.length;
+                        });
+                      },
+                      foregroundColor: customizations[index].$1,
+                      backgroundColor: customizations[index].$2,
+                      shape: customizations[index].$3,
+                      child: const Icon(Icons.navigation),
+                    ),
+                    const Text("Other")
+                  ]),
+                ],
+              )
+            ]));
   }
 }
