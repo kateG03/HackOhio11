@@ -44,9 +44,9 @@ class _StartScreenState extends State<StartScreen> {
                                 const FloatingActionButtonExampleApp()));
                   },
                   child: const Icon(Icons.search)),
-              const SearchBar(
-                
-              ),
+              const Expanded(
+                child: SearchBar(),
+              )
             ],
           ),
           ListTile(
