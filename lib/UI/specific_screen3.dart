@@ -18,23 +18,23 @@ class _SpecificScreenState extends State<SpecificScreen> {
     if (widget.category == "Bathrooms") {
       List<String> bathroomImages = <String>[
         "assets/OUBasementBW.png",
-        "assets/OUFloor1BW.png",
-        "assets/OUFloor2BW.png",
-        "assets/OUFloor3BW.png"
+        "assets/OUFloor1BWBATHROOMS.png",
+        "assets/OUFloor2BWBATHROOMS.png",
+        "assets/OUFloor3BWBATHROOMS.png"
       ];
       return Image.asset(bathroomImages[newPosition]);
     } else if (widget.category == "Food") {
       List<String> foodImages = <String>[
         "assets/OUBasement.png",
-        "assets/OUFloor1.png",
-        "assets/OUFloor2.png",
-        "assets/OUFloor3.png"
+        "assets/OUFloor1STAIRS.png",
+        "assets/OUFloor2STAIRS.png",
+        "assets/OUFloor3STAIRS.png"
       ];
       return Image.asset(foodImages[newPosition]);
     } else {
       List<String> exitImages = <String>[
         "assets/OUBasement.png",
-        "assets/OUFloor1.png",
+        "assets/OUFloor1EXIT.png",
         "assets/OUFloor2.png",
         "assets/OUFloor3.png"
       ];
