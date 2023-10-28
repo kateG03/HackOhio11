@@ -1,39 +1,50 @@
 //List<String> directions = <String>[];
 //directions.insert("Go from")
 
-class RoomNode {
+import 'messy_tree.dart';
+
+class Room {
 String name;
 String? number;
+List<MessyNode> nodes;
 //Position position;
-double latitude;
-double longitude;
 
-  RoomNode({required this.name, this.number, required this.latitude, required this.longitude});
+
+  Room({required this.name, this.number, required this.nodes});
 
 }
 
-RoomNode sloopy = RoomNode(
-  name: "Sloopy's Diner", 
-  latitude: 39.997466, 
-  longitude: -83.008996
+Room sloopy = Room(
+  name: "Sloopy's Diner",
+  nodes: [MessyNode(
+    latitude: 39.997466, 
+    longitude: -83.008996
+  )]
 );
 
-RoomNode archie = RoomNode(
-  name: "Archie M. Griffin Grand Ballroom", 
-  latitude: 39.997853, 
-  longitude: -83.008483
+Room archie = Room(
+  name: "Archie M. Griffin Grand Ballroom",
+  number: "2133",
+  nodes: [MessyNode(
+    latitude: 39.997853, 
+    longitude: -83.008483
+  )]
 );
 
-RoomNode entrance = RoomNode(
-  name: "Ohio Union Entrance", 
-  latitude: 39.997593, 
-  longitude: -83.008965
+Room entrance = Room(
+  name: "Ohio Union Entrance",
+  nodes: [MessyNode(
+    latitude: 39.997593, 
+    longitude: -83.008965
+  )]
 );
 
-RoomNode unionMarket = RoomNode(
-  name: "Union Market", 
-  latitude: 39.997715, 
-  longitude: -83.008872
+Room unionMarket = Room(
+  name: "Union Market",
+  nodes: [MessyNode(
+    latitude: 39.997715, 
+    longitude: -83.008872
+  )]
 );
 
 
