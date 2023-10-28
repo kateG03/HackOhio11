@@ -89,7 +89,9 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
+      body: StartScreen(),
+      /*
+      Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: Column(
@@ -108,15 +110,6 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => StartScreen()),
-                );
-              },
-              child: const Text('Elevated Button'),
-            ),
             const Text(
               'You have pushed the button this many times:',
             ),
@@ -127,6 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
+      */
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
