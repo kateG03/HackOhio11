@@ -44,7 +44,7 @@ class _FloatingActionButtonExampleState
             children: [
               Column(children: [
                 FloatingActionButton(
-              
+                  heroTag: "btn1",
                   onPressed: () {
                     setState(() {
                       index = (index + 1) % customizations.length;
@@ -59,6 +59,7 @@ class _FloatingActionButtonExampleState
               ]),
               Column(children: [
                 FloatingActionButton(
+                  heroTag: "btn2",
                   onPressed: () {
                     setState(() {
                       index = (index + 1) % customizations.length;
@@ -73,6 +74,7 @@ class _FloatingActionButtonExampleState
               ]),
               Column(children: [
                 FloatingActionButton(
+                  heroTag: "btn3",
                   onPressed: () {
                     setState(() {
                       index = (index + 1) % customizations.length;
