@@ -26,7 +26,7 @@ class _StartScreenState extends State<StartScreen> {
           child: ListView(padding: EdgeInsets.zero, children: const [
         DrawerHeader(
           decoration: BoxDecoration(
-            color: Colors.blue,
+            color: Color.fromARGB(255, 235, 197, 95),
           ),
           child: Text('Drawer Header'),
         )
