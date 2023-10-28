@@ -59,10 +59,10 @@ class _FloatingActionButtonExampleState
                       },
                     ),
                   )),
-               Row (
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                    Column(children: [
+                  Column(children: [
                     FloatingActionButton(
                       heroTag: "btn8",
                       onPressed: () {
@@ -74,7 +74,8 @@ class _FloatingActionButtonExampleState
                       backgroundColor: customizations[index].$2,
                       shape: customizations[index].$3,
                       child: const Icon(Icons.wc),
-                    )]),
+                    )
+                  ]),
                   Column(children: [
                     FloatingActionButton(
                       heroTag: "btn5",
@@ -116,14 +117,13 @@ class _FloatingActionButtonExampleState
                       shape: customizations[index].$3,
                       child: const Icon(Icons.door_back_door_outlined),
                     ),
-
                   ]),
                 ],
-
-    )],),
-               Divider(height: 70, color: const Color.fromARGB(0, 0, 0, 0)),
-               Container(height: 400, color: const Color.fromARGB(255, 0, 0, 0)),
-               Divider(height: 30, color: const Color.fromARGB(0, 0, 0, 0)),
+              ),
+              const Divider(height: 70, color: Color.fromARGB(0, 0, 0, 0)),
+              Container(height: 400, color: const Color.fromARGB(255, 0, 0, 0)),
+              const Divider(
+                  height: 30, color: const Color.fromARGB(0, 0, 0, 0)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -173,7 +173,7 @@ class _FloatingActionButtonExampleState
                     const Text("Exits")
                   ]),
                 ],
-              )
+              ),
             ]));
   }
 }
