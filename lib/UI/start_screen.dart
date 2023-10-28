@@ -1,7 +1,6 @@
 import 'dart:developer';
-
-import 'package:MyIndoorNav/UI/search_screen2.dart';
 import 'package:flutter/material.dart';
+import 'package:my_indoor_nav/UI/search_screen2.dart';
 
 class StartScreen extends StatefulWidget {
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
@@ -33,7 +32,7 @@ class _StartScreenState extends State<StartScreen> {
       ])),
       body: Column(
         children: <Widget>[
-          Divider(height: 30),
+          const Divider(height: 30),
           SizedBox(
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

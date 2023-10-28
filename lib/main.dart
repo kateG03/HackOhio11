@@ -1,5 +1,6 @@
-import 'package:MyIndoorNav/UI/start_screen.dart';
+
 import 'package:flutter/material.dart';
+import 'package:my_indoor_nav/UI/start_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,7 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 69, 173, 72),
+        backgroundColor: const Color.fromARGB(255, 69, 173, 72),
         title: Text(widget.title),
       ),
       body: StartScreen(),
