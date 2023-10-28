@@ -10,23 +10,20 @@ class MessyNode {
     return connections.contains(node);
   }
 
-  void addConnection(MessyNode node){
+  void addConnection(MessyNode node) {
     connections.insert(0, node);
   }
 }
 
 class MessyTree {
+  MessyNode head = MessyNode(latitude: 0, longitude: 0);
 
-  
-  List<MessyNode> getPath(MessyNode start, MessyNode end){
+  List<MessyNode> getPath(MessyNode start, MessyNode end) {
     List<MessyNode> path = [];
-    if(start.isConnected(end))
-    {
+    if (start.isConnected(end)) {
       path = [start, end];
-    }
-    else
-    {
-      for(MessyNode n in start.connections){
+    } else {
+      for (MessyNode n in start.connections) {
         getPath(n, end);
       }
     }
