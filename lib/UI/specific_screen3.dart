@@ -142,6 +142,8 @@ class _SpecificScreenState extends State<SpecificScreen> {
                   height: 400,
                   color: Color.fromARGB(255, 255, 255, 255),
                   child: _getHighlightedImage(selectedFloor)),
+                  color: const  Color.fromARGB(255, 255, 255, 255),
+                  child: _getImage(selectedFloor)),
               const Divider(height: 20, color: Color.fromARGB(0, 0, 0, 0)),
             ]));
   }
