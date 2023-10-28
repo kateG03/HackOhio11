@@ -13,15 +13,6 @@ class _SpecificScreenState extends State<SpecificScreen> {
   Color selectedFloorColor = const Color.fromARGB(255, 198, 36, 36);
   int selectedFloor = 1;
 
-  String getDestination() {
-    if (widget.category == "Bathrooms") {
-      return "Bathrooms";
-    } else if (widget.category == "Food") {
-      return "Food";
-    } else {
-      return "Exits";
-    }
-  }
 
   Widget _getHighlightedImage(int newPosition) {
     if (widget.category == "Bathrooms") {
@@ -55,7 +46,8 @@ class _SpecificScreenState extends State<SpecificScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(getDestination(),
+          iconTheme: IconThemeData(color: Colors.white),
+          title: Text(widget.category,
               style:
                   const TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
           backgroundColor: const Color.fromARGB(255, 198, 36, 36),
@@ -85,7 +77,7 @@ class _SpecificScreenState extends State<SpecificScreen> {
                       },
                       child: const Text("B",
                           style: TextStyle(
-                              color: Color.fromARGB(255, 255, 255, 255)))),
+                              color: Color.fromARGB(255, 255, 255, 255), fontSize: 20))),
                   FloatingActionButton(
                     heroTag: "btn5",
                     backgroundColor: selectedFloor == 1
@@ -98,7 +90,7 @@ class _SpecificScreenState extends State<SpecificScreen> {
                     },
                     child: const Text("1",
                         style: TextStyle(
-                            color: Color.fromARGB(255, 255, 255, 255))),
+                            color: Color.fromARGB(255, 255, 255, 255), fontSize: 20)),
                   ),
                   FloatingActionButton(
                     heroTag: "btn6",
@@ -112,7 +104,7 @@ class _SpecificScreenState extends State<SpecificScreen> {
                     },
                     child: const Text("2",
                         style: TextStyle(
-                            color: Color.fromARGB(255, 255, 255, 255))),
+                            color: Color.fromARGB(255, 255, 255, 255), fontSize: 20)),
                   ),
                   FloatingActionButton(
                     heroTag: "btn7",
@@ -126,7 +118,7 @@ class _SpecificScreenState extends State<SpecificScreen> {
                     },
                     child: const Text("3",
                         style: TextStyle(
-                            color: Color.fromARGB(255, 255, 255, 255))),
+                            color: Color.fromARGB(255, 255, 255, 255), fontSize: 20)),
                   ),
                 ],
               ),
@@ -135,9 +127,13 @@ class _SpecificScreenState extends State<SpecificScreen> {
                   height: 400,
                   color: const Color.fromARGB(255, 255, 255, 255),
                   child: _getHighlightedImage(selectedFloor)),
-              //color: const  Color.fromARGB(255, 255, 255, 255),
-              //child: _getImage(selectedFloor)),
-              const Divider(height: 20, color: Color.fromARGB(0, 0, 0, 0)),
+                  //color: const  Color.fromARGB(255, 255, 255, 255),
+                  //child: _getImage(selectedFloor)),
+              const Divider(height: 40, color: Color.fromARGB(0, 0, 0, 0)),
+              Container(
+                height: 121,
+                color: const Color.fromARGB(255, 198, 36, 36)
+              )
             ]));
   }
 }

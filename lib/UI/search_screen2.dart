@@ -151,7 +151,7 @@ class _FloatingActionButtonExampleState
                                       )));
                         });
                       },
-                      child: const Icon(Icons.wc, color: Colors.white),
+                      child: const Icon(Icons.wc, color: Colors.white, size: 35,),
                     ),
                     const Divider(
                         height: 10, color: Color.fromARGB(0, 0, 0, 0)),
@@ -167,15 +167,14 @@ class _FloatingActionButtonExampleState
                               context,
                               MaterialPageRoute(
                                   builder: (context) => const SpecificScreen(
-                                        category: 'Food',
+                                        category: 'Stairs',
                                       )));
                         });
                       },
-                      child: const Icon(Icons.fastfood, color: Colors.white),
+                      child: const Icon(Icons.stairs_rounded, color: Colors.white, size: 35,),
                     ),
-                    const Divider(
-                        height: 10, color: Color.fromARGB(0, 0, 0, 0)),
-                    const Text("Food")
+                    const Divider(height: 10, color: Color.fromARGB(0, 0, 0, 0)),
+                    const Text("Stairs")
                   ]),
                   Column(children: [
                     FloatingActionButton(
@@ -191,8 +190,7 @@ class _FloatingActionButtonExampleState
                                       )));
                         });
                       },
-                      child: const Icon(Icons.door_back_door_outlined,
-                          color: Colors.white),
+                      child: const Icon(Icons.door_back_door_outlined, color: Colors.white, size: 35,),
                     ),
                     const Divider(
                         height: 10, color: Color.fromARGB(0, 0, 0, 0)),
