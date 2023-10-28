@@ -22,9 +22,12 @@ class MessyTree {
     List<MessyNode> path = [];
     if (start.isConnected(end)) {
       path = [start, end];
-    } else {
-      for (MessyNode n in start.connections) {
-        getPath(n, end);
+    }
+    else
+    {
+      for(MessyNode n in start.connections){
+        path=getPath(n, end);
+        path.insert(0,start);
       }
     }
     return path;
