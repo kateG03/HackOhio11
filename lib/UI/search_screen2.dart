@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:my_indoor_nav/UI/specific_screen3.dart';
 
 class FloatingActionButtonExampleApp extends StatelessWidget {
   const FloatingActionButtonExampleApp({super.key});
@@ -41,16 +42,17 @@ class _FloatingActionButtonExampleState
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Destination: ', style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
+          title: const Text('Destination: ',
+              style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
           backgroundColor: const Color.fromARGB(255, 198, 36, 36),
         ),
         body: Column(
             //mainAxisAlignment: MainAxisAlignment,
             children: [
               const Divider(
-            height: 10,
-            color: Color.fromARGB(0, 0, 0, 0),
-          ),
+                height: 10,
+                color: Color.fromARGB(0, 0, 0, 0),
+              ),
               SizedBox(
                   height: 50,
                   child: DropdownMenu(
@@ -138,7 +140,14 @@ class _FloatingActionButtonExampleState
                     FloatingActionButton(
                       heroTag: "btn1",
                       onPressed: () {
-                        setState(() {});
+                        setState(() {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const SpecificScreen(
+                                        category: 'Bathrooms',
+                                      )));
+                        });
                       },
                       child: const Icon(Icons.wc),
                     ),
@@ -148,7 +157,14 @@ class _FloatingActionButtonExampleState
                     FloatingActionButton(
                       heroTag: "btn2",
                       onPressed: () {
-                        setState(() {});
+                        setState(() {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const SpecificScreen(
+                                        category: 'Food',
+                                  )));
+                        });
                       },
                       child: const Icon(Icons.fastfood),
                     ),
@@ -158,7 +174,14 @@ class _FloatingActionButtonExampleState
                     FloatingActionButton(
                       heroTag: "btn3",
                       onPressed: () {
-                        setState(() {});
+                        setState(() {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const SpecificScreen(
+                                        category: 'Exits',
+                                  )));
+                        });
                       },
                       child: const Icon(Icons.door_back_door_outlined),
                     ),
