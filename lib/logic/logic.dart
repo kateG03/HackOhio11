@@ -9,7 +9,6 @@ String? number;
 List<MessyNode> nodes;
 //Position position;
 
-
   Room({required this.name, this.number, required this.nodes});
 
 }
