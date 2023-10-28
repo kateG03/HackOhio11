@@ -20,8 +20,7 @@ class _StartScreenState extends State<StartScreen> {
     log("opening...");
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Select Building:',
-            style: TextStyle(fontSize: 18)),
+        title: const Text('Select Building:', style: TextStyle(fontSize: 18)),
       ),
       drawer: Drawer(
           child: ListView(padding: EdgeInsets.zero, children: const [
@@ -35,9 +34,10 @@ class _StartScreenState extends State<StartScreen> {
       body: Column(
         children: <Widget>[
           SizedBox(
-              height: 50,
-              child: Expanded(
-                child: DropdownMenu(
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                DropdownMenu(
                   leadingIcon: const Icon(Icons.search),
                   dropdownMenuEntries: const [
                     DropdownMenuEntry(value: 0, label: "The Ohio State Union")
@@ -50,9 +50,7 @@ class _StartScreenState extends State<StartScreen> {
                                 const FloatingActionButtonExampleApp()));
                   },
                 ),
-              )),
-         
-        
+              ])),
         ],
       ),
     );
