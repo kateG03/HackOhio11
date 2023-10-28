@@ -59,22 +59,26 @@ class _FloatingActionButtonExampleState
                       },
                     ),
                   )),
+              const Divider(height: 25, color: Color.fromARGB(0, 0, 0, 0)),
+              Text("Select the floor you are on currently: "),
+            
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Column(children: [
                     FloatingActionButton(
-                      heroTag: "btn8",
-                      onPressed: () {
-                        setState(() {
-                          index = (index + 1) % customizations.length;
-                        });
-                      },
-                      foregroundColor: customizations[index].$1,
-                      backgroundColor: customizations[index].$2,
-                      shape: customizations[index].$3,
-                      child: const Icon(Icons.wc),
-                    )
+                        
+                        heroTag: "btn8",
+                        onPressed: () {
+                          setState(() {
+                            index = (index + 1) % customizations.length;
+                          });
+                        },
+                        foregroundColor: customizations[index].$1,
+                        backgroundColor: customizations[index].$2,
+                        shape: customizations[index].$3,
+                        child: const Text("1")
+                        )
                   ]),
                   Column(children: [
                     FloatingActionButton(
@@ -120,7 +124,8 @@ class _FloatingActionButtonExampleState
                   ]),
                 ],
               ),
-              const Divider(height: 70, color: Color.fromARGB(0, 0, 0, 0)),
+              
+              const Divider(height: 40, color: Color.fromARGB(0, 0, 0, 0)),
               Container(height: 400, color: const Color.fromARGB(255, 0, 0, 0)),
               const Divider(
                   height: 30, color: const Color.fromARGB(0, 0, 0, 0)),
