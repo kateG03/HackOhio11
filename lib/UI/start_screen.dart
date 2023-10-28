@@ -47,7 +47,7 @@ class _StartScreenState extends State<StartScreen> {
                 ),
               ])),
           const Divider(
-            height: 40,
+            height: 80,
             color: Color.fromARGB(0, 0, 0, 0),
           ),
           const Text("or",
@@ -61,12 +61,23 @@ class _StartScreenState extends State<StartScreen> {
               style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
               textScaleFactor: 1.5),
           const Divider(
-            height: 80,
+            height: 120,
             color: Color.fromARGB(0, 0, 0, 0),
           ),
-          ElevatedButton(onPressed: () {}, child: const Icon(Icons.photo_camera, size: 24,),
-            style: const ButtonStyle(fixedSize: Size(10), Color.fromARGB(255, 0, 0, 0),
-               )
+          ElevatedButton(
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(
+              backgroundColor:
+                  Color.fromARGB(255, 198, 36, 36), // background (button) color
+              foregroundColor: Colors.white, // foreground (text) color
+              fixedSize: Size.fromRadius(50),
+              shape: CircleBorder()
+            ),
+            child: const Icon(
+              Icons.photo_camera,
+              size: 50,
+            ),
+          )
         ],
       ),
     );
