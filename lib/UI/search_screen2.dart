@@ -36,7 +36,8 @@ class _FloatingActionButtonExampleState
     return Image.asset(images[newPosition]);
   }
 
-  Color selectedFloorColor = Colors.white;
+  Color selectedFloorColor = Color.fromARGB(255, 97, 96, 93);
+  Color unselectedFloorColor = Color.fromARGB(255, 198, 36, 36)
   int selectedFloor = 1;
   @override
   Widget build(BuildContext context) {
