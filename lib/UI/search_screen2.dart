@@ -131,6 +131,7 @@ class _FloatingActionButtonExampleState
                 children: [
                   Column(children: [
                     FloatingActionButton(
+                      backgroundColor: Color.fromARGB(255, 198, 38, 38),
                       heroTag: "btn1",
                       onPressed: () {
                         setState(() {
@@ -142,12 +143,14 @@ class _FloatingActionButtonExampleState
                                       )));
                         });
                       },
-                      child: const Icon(Icons.wc),
+                      child: const Icon(Icons.wc, color: Colors.white),
                     ),
+                    const Divider(height: 10, color: Color.fromARGB(0, 0, 0, 0)),
                     const Text("Bathrooms")
                   ]),
                   Column(children: [
                     FloatingActionButton(
+                      backgroundColor: Color.fromARGB(255, 198, 38, 38),
                       heroTag: "btn2",
                       onPressed: () {
                         setState(() {
@@ -159,12 +162,14 @@ class _FloatingActionButtonExampleState
                                   )));
                         });
                       },
-                      child: const Icon(Icons.fastfood),
+                      child: const Icon(Icons.fastfood, color: Colors.white),
                     ),
+                    const Divider(height: 10, color: Color.fromARGB(0, 0, 0, 0)),
                     const Text("Food")
                   ]),
                   Column(children: [
                     FloatingActionButton(
+                      backgroundColor: Color.fromARGB(255, 198, 38, 38),
                       heroTag: "btn3",
                       onPressed: () {
                         setState(() {
@@ -176,8 +181,9 @@ class _FloatingActionButtonExampleState
                                   )));
                         });
                       },
-                      child: const Icon(Icons.door_back_door_outlined),
+                      child: const Icon(Icons.door_back_door_outlined, color: Colors.white),
                     ),
+                    const Divider(height: 10, color: Color.fromARGB(0, 0, 0, 0)),
                     const Text("Exits")
                   ]),
                 ],
