@@ -55,7 +55,6 @@ class _StartScreenState extends State<StartScreen> {
           ListTile(
               title: const Text('Item 2'), onTap: () => Navigator.pop(context)),
           Center(child: Text('Value: $searchValue')),
-          const Text("this was qr view"),
         ],
       ),
     );

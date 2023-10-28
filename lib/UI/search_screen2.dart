@@ -41,9 +41,9 @@ class _FloatingActionButtonExampleState
         body: Column(
           children: [
             const SearchBar(),
-            Row (children: [
+            const Row (children: [
               
-            ],)
+            ]),
             FloatingActionButton(
               onPressed: () {
                 setState(() {
