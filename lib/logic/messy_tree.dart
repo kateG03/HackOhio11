@@ -14,24 +14,34 @@ class MessyNode {
     connections.insert(0, node);
   }
 
-  bool isEqual(MessyNode node){
-    return node.latitude==latitude && node.longitude==latitude;
+  bool isEqual(MessyNode node) {
+    return node.latitude == latitude && node.longitude == latitude;
   }
 }
 
 class MessyTree {
   MessyNode head = MessyNode(latitude: 0, longitude: 0);
 
+  List<MessyNode> test(MessyNode start, MessyNode end, MessyNode caller) {
+    List<MessyNode> path = List.empty(growable: true);
+    for (MessyNode n in start.connections) {
+      if (n.isConnected(end) && !n.isEqual(caller)) {
+        path.addAll(test(n, end, start));
+      }
+    }
+    return path;
+  }
+
   List<MessyNode> getPaths(MessyNode start, MessyNode end, MessyNode previous) {
     List<MessyNode> path = List.empty(growable: true);
-    
+
     if (start.isConnected(end)) {
       path = [start, end];
     } else {
       for (MessyNode n in start.connections) {
-        if(!n.isEqual(previous)){
+        if (!n.isEqual(previous)) {
           path = getPaths(n, end, start);
-          if(path.isNotEmpty){
+          if (path.isNotEmpty) {
             path.insert(0, start);
           }
         }
