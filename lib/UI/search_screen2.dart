@@ -36,8 +36,8 @@ class _FloatingActionButtonExampleState
     return Image.asset(images[newPosition]);
   }
 
-  Color selectedFloorColor = Color.fromARGB(255, 97, 96, 93);
-  Color unselectedFloorColor = Color.fromARGB(255, 198, 36, 36)
+  Color unselectedFloorColor = const Color.fromARGB(255, 97, 96, 93);
+  Color selectedFloorColor = const Color.fromARGB(255, 198, 36, 36);
   int selectedFloor = 1;
   @override
   Widget build(BuildContext context) {
@@ -75,56 +75,48 @@ class _FloatingActionButtonExampleState
                       heroTag: "btn8",
                       backgroundColor: selectedFloor == 0
                           ? selectedFloorColor
-                          : Theme.of(context)
-                              .floatingActionButtonTheme
-                              .backgroundColor,
+                          : unselectedFloorColor,
                       onPressed: () {
                         setState(() {
                           selectedFloor = 0;
                         });
                       },
-                      child: const Text("B")),
+                      child: const Text("B", style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)))),
                   FloatingActionButton(
                     heroTag: "btn5",
                     backgroundColor: selectedFloor == 1
                         ? selectedFloorColor
-                        : Theme.of(context)
-                            .floatingActionButtonTheme
-                            .backgroundColor,
+                        : unselectedFloorColor,
                     onPressed: () {
                       setState(() {
                         selectedFloor = 1;
                       });
                     },
-                    child: const Text("1"),
+                    child: const Text("1", style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
                   ),
                   FloatingActionButton(
                     heroTag: "btn6",
                     backgroundColor: selectedFloor == 2
                         ? selectedFloorColor
-                        : Theme.of(context)
-                            .floatingActionButtonTheme
-                            .backgroundColor,
+                        : unselectedFloorColor,
                     onPressed: () {
                       setState(() {
                         selectedFloor = 2;
                       });
                     },
-                    child: const Text("2"),
+                    child: const Text("2", style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
                   ),
                   FloatingActionButton(
                     heroTag: "btn7",
                     backgroundColor: selectedFloor == 3
                         ? selectedFloorColor
-                        : Theme.of(context)
-                            .floatingActionButtonTheme
-                            .backgroundColor,
+                        : unselectedFloorColor,
                     onPressed: () {
                       setState(() {
                         selectedFloor = 3;
                       });
                     },
-                    child: const Text("3"),
+                    child: const Text("3", style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
                   ),
                 ],
               ),
