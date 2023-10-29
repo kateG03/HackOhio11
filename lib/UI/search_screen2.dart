@@ -132,7 +132,9 @@ class _FloatingActionButtonExampleState
               Container(
                 height: 400,
                 color: const Color.fromARGB(255, 255, 255, 255),
-                child: Stack(children: [_getImage(selectedFloor)]),
+                child: Stack(children: [
+                  InteractiveViewer(child: _getImage(selectedFloor))
+                ]),
               ),
               const Divider(height: 20, color: Color.fromARGB(0, 0, 0, 0)),
               Row(

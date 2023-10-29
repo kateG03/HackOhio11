@@ -130,7 +130,8 @@ class _SpecificScreenState extends State<SpecificScreen> {
               Container(
                   height: 400,
                   color: const Color.fromARGB(255, 255, 255, 255),
-                  child: _getHighlightedImage(selectedFloor)),
+                  child: InteractiveViewer(child: 
+                   _getHighlightedImage(selectedFloor))),
               //color: const  Color.fromARGB(255, 255, 255, 255),
               //child: _getImage(selectedFloor)),
               const Divider(height: 40, color: Color.fromARGB(0, 0, 0, 0)),
