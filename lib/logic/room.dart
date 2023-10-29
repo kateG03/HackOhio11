@@ -23,7 +23,7 @@ class RoomList {
       name: "Maudine Cow Room",
       //FIXME
       nodes: [MessyNode(latitude: 39.997715, longitude: -83.008872)]);
-      roomList.add(dynamic cowRoom);
+      roomList.add(cowRoom);
 
   Room creativeRoom = Room(
       name: "Creative Arts Room",
