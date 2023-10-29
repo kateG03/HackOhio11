@@ -1,4 +1,5 @@
 import 'package:geolocator/geolocator.dart';
+import 'package:my_indoor_nav/logic/room.dart';
 
 class MessyNode {
   var data = Null;
@@ -32,16 +33,6 @@ class MessyTree {
       temp[n]=Geolocator.distanceBetween(node.latitude,node.longitude,n.latitude,n.longitude);
     }
     graph[node]=temp;
-  }
-
-  List<MessyNode> test(MessyNode start, MessyNode end, MessyNode caller) {
-    List<MessyNode> path = List.empty(growable: true);
-    for (MessyNode n in start.connections) {
-      if (n.isConnected(end) && !n.isEqual(caller)) {
-        path.addAll(test(n, end, start));
-      }
-    }
-    return path;
   }
 
   List<MessyNode> findShortestPath(MessyNode start, MessyNode end) {
@@ -105,4 +96,42 @@ class MessyTree {
   
     return path;
   }
+}
+
+class FirstFloor {
+MessyNode traversal1 = MessyNode(latitude: 39.9976644, longitude: -83.0088490);
+MessyNode traversal2 = MessyNode(latitude: 39.9976115, longitude: -83.0085966);
+MessyNode traversal3 = MessyNode(latitude: 39.9976521, longitude: -83.0084008);
+MessyNode traversal4 = MessyNode(latitude: 39.9977759, longitude: -83.0082341);
+MessyNode traversal5 = MessyNode(latitude: 39.9979924, longitude: -83.0082703);
+
+Room sloopy = Room(
+  name: "Sloopy's Diner",
+  nodes: [MessyNode(latitude: 39.99736, longitude: -83.00898)]);
+Room unionMarket = Room(
+  name: "Union Market",
+  nodes: [MessyNode(latitude: 39.99783, longitude: -83.00891)]);
+Room woodyRoom = Room(
+  name: "Woody's Tavern",
+  nodes: [MessyNode(latitude: 39.99776, longitude: -83.008871)]);
+Room infoCenter = Room(
+  name: "Information Center",
+  nodes: [MessyNode(latitude: 39.99756, longitude: -83.00830)]);
+Room alumniAssociation = Room(
+  name: "The Ohio State University Alumni Association",
+  nodes: [MessyNode(latitude: 39.99756, longitude: -83.00830)]);
+Room meetingRoom = Room(
+  name: "Great Hall Meeting Room",
+  nodes: [MessyNode(latitude: 39.99786, longitude: -83.00843)]);
+Room safetyRoom = Room(
+  name: "OSU Public Safety",
+  nodes: [MessyNode(latitude: 39.99795, longitude: -83.00821)]);
+Room bookRoom = Room(
+  name: "The Ohio State University Bookstore",
+  nodes: [MessyNode(latitude: 39.99786, longitude: -83.00820)]);
+
+MessyTree firstFloor
+
+traversal1.addConnection(traversal2);
+
 }
