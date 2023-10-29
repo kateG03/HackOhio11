@@ -106,4 +106,3 @@ class MessyTree {
     return path;
   }
 }
-
