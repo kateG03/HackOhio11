@@ -167,11 +167,8 @@ class _FloatingActionButtonExampleState
                         log("connection done");
                         log("screen pos: ${snapshot.data?[0]}, ${snapshot.data?[1]}");
                         return Positioned(
-                            //bottom: snapshot.data?[0],
-                            //left: snapshot.data?[1],
-                            bottom: northHighScreenPos[0],
-                            left: northHighScreenPos[1],
-
+                            bottom: fifthEntranceScreenPos[0],
+                            left: fifthEntranceScreenPos[1],
                             child: const Icon(
                               Icons.circle_outlined,
                               size: 25,

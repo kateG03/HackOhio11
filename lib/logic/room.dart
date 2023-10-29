@@ -9,10 +9,6 @@ import 'messy_tree.dart';
 
 List<Room> roomList = [];
 
-final List<double> northHighScreenPos = [330, 182];
-
-final List<double> mainEntranceScreenPos = [95, 169];
-
 class Room {
   String name;
   String? number;
@@ -22,13 +18,35 @@ class Room {
   Room({required this.name, this.number, required this.nodes});
 }
 
-Room frontEntrance = Room(
-    name: "Front Entrance",
-    nodes: [MessyNode(latitude: 39.9977124, longitude: -83.0090093)]);
+// y - x
+final List<double> northHighScreenPos = [330, 182];
 
 Room highStreetEntrance = Room(
     name: "High Street Entrance",
-    nodes: [MessyNode(latitude: 39.9976980, longitude: -83.0081285)]);
+    //39.9976980 - -83.0081285
+    nodes: [MessyNode(latitude: 39.9976636, longitude: -83.0081010)]);
+
+final List<double> mainEntranceScreenPos = [95, 169];
+
+Room frontEntrance = Room(
+    name: "Front Entrance",
+    //39.9977124 - -83.0090093
+    nodes: [MessyNode(latitude: 39.9976115, longitude: -83.0089711)]);
+
+final List<double> thirdEntranceScreenPos = [20, 20];
+
+Room thirdEntrance =
+    Room(name: "3rd Entrance", nodes: [MessyNode(latitude: 0, longitude: 0)]);
+
+final List<double> fourthEntranceScreenPos = [170, 303];
+
+Room fourthEntrance =
+    Room(name: "4th Entrance", nodes: [MessyNode(latitude: 0, longitude: 0)]);
+
+final List<double> fifthEntranceScreenPos = [300, 9];
+
+Room fifthEntrance =
+    Room(name: "5th Entrance", nodes: [MessyNode(latitude: 0, longitude: 0)]);
 
 class RoomList {
   Future<void> createRoomList() async {
