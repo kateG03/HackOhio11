@@ -47,8 +47,7 @@ class _FloatingActionButtonExampleState
     double lon = pos.longitude;
     double lat = pos.latitude;
 
-  
-  /*
+    /*
     List<double> x = [
       northHighScreenPos[0],
       mainEntranceScreenPos[0],
@@ -100,13 +99,13 @@ class _FloatingActionButtonExampleState
     double by = (LSum - my * ySum) / N;
 
     */
-    double screenPosBottom = northHighScreenPos[0] +
+    double screenPosLeft = northHighScreenPos[0] +
         (lat - highStreetEntrance.nodes.first.latitude) *
             ((mainEntranceScreenPos[0] - northHighScreenPos[0]) /
                 (frontEntrance.nodes.first.latitude -
                     highStreetEntrance.nodes.first.latitude));
 
-    double screenPosLeft = northHighScreenPos[1] +
+    double screenPosBottom = northHighScreenPos[1] +
         (lon - highStreetEntrance.nodes.first.longitude) *
             ((mainEntranceScreenPos[1] - northHighScreenPos[1]) /
                 (frontEntrance.nodes.first.longitude -
@@ -114,7 +113,7 @@ class _FloatingActionButtonExampleState
 
     //double screenPosBottom = mx * lat + bx;
     //double screenPosLeft = my * lon + by;
-    return [screenPosBottom, screenPosLeft];
+    return [screenPosLeft, screenPosBottom];
   }
 
   Color unselectedFloorColor = const Color.fromARGB(255, 97, 96, 93);
@@ -227,6 +226,37 @@ class _FloatingActionButtonExampleState
               color: const Color.fromARGB(255, 255, 255, 255),
               child: Stack(children: [
                 _getImage(selectedFloor),
+
+                //DEBUG
+                Positioned(
+                    bottom: 0,
+                    left: 0,
+                    child: Column(children: [
+                      const Icon(
+                        Icons.crop_square_sharp,
+                        size: 25,
+                        color: Colors.red,
+                      ),
+                      Text("0, 0",
+                          style: TextStyle(
+                              fontSize: 15, color: Colors.purple[700])),
+                    ])),
+
+                Positioned(
+                    bottom: 330,
+                    left: 300,
+                    child: Column(children: [
+                      const Icon(
+                        Icons.crop_square_sharp,
+                        size: 25,
+                        color: Colors.red,
+                      ),
+                      Text("300, 330",
+                          style: TextStyle(
+                              fontSize: 15, color: Colors.purple[700])),
+                    ])),
+
+                //END DEBUG
                 StreamBuilder(
                   stream: Geolocator.getPositionStream(),
                   builder: (context, snapshot) {
@@ -237,18 +267,14 @@ class _FloatingActionButtonExampleState
                         positions = value;
                       });
                       return Positioned(
-                          bottom: positions[0],
-                          right: positions[1],
-                          child: Column(children: [
-                            const Icon(
-                              Icons.circle_outlined,
-                              size: 25,
-                              color: Colors.red,
-                            ),
-                            Text("${positions[0]}, ${positions[1]}",
-                                style: TextStyle(
-                                    fontSize: 15, color: Colors.purple[700])),
-                          ]));
+                        bottom: positions[1] + 75,
+                        right: positions[0] + 50,
+                        child: const Icon(
+                          Icons.circle_outlined,
+                          size: 25,
+                          color: Colors.red,
+                        ),
+                      );
                     } else {
                       log("waiting for connection");
                       return const Positioned(
