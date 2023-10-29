@@ -33,7 +33,7 @@ class _FloatingActionButtonExampleState
       "assets/OUFloor2.png",
       "assets/OUFloor3.png"
     ];
-    return Image.asset(images[newPosition]);
+    return InteractiveViewer(key: UniqueKey(), child: Image.asset(images[newPosition]));
   }
 
   Color unselectedFloorColor = const Color.fromARGB(255, 97, 96, 93);
