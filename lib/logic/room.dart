@@ -29,26 +29,26 @@ Room frontEntrance = Room(
 Room highStreetEntrance = Room(
     name: "High Street Entrance",
     nodes: [MessyNode(latitude: 39.9976980, longitude: -83.0081285)]);
-
+    
 class RoomList {
   Future<void> createRoomList() async {
     //Basement
     Room cowRoom = Room(
         name: "Maudine Cow Room",
         nodes: [MessyNode(latitude: 39.997762, longitude: -83.00864)]);
-    roomList.add(cowRoom);
+        roomList.add(cowRoom);
     Room creativeRoom = Room(
         name: "Creative Arts Room",
         nodes: [MessyNode(latitude: 39.99791, longitude: -83.00890)]);
-    roomList.add(creativeRoom);
+        roomList.add(creativeRoom);
     Room mileRoom = Room(
         name: "Milestones Room",
         nodes: [MessyNode(latitude: 39.99753, longitude: -83.00916)]);
-
+        roomList.add(mileRoom);
     Room danceRoom1 = Room(
         name: "Dance Room 1",
         nodes: [MessyNode(latitude: 39.99750, longitude: -83.00875)]);
-
+        roomList.add(danceRoom1);
     Room danceRoom2 = Room(
         name: "Dance Room 2",
         //FIXME
@@ -57,7 +57,7 @@ class RoomList {
     Room kitchenRoom = Room(
         name: "Instructional Kitchen",
         nodes: [MessyNode(latitude: 39.99747, longitude: -83.00877)]);
-
+        roomList.add(kitchenRoom);
     Room lowerLoungeRoom = Room(
         name: "Lower Level Lounge",
         //FIXME
@@ -67,28 +67,35 @@ class RoomList {
     Room entrance = Room(
         name: "Ohio Union Entrance",
         nodes: [MessyNode(latitude: 39.99761, longitude: -83.00894)]);
-
+        roomList.add(entrance);
     Room safetyRoom = Room(
         name: "OSU Public Safety",
         nodes: [MessyNode(latitude: 39.99795, longitude: -83.00821)]);
+        roomList.add(safetyRoom);
     Room bookRoom = Room(
         name: "The Ohio State University Bookstore",
         nodes: [MessyNode(latitude: 39.99786, longitude: -83.00820)]);
+        roomList.add(bookRoom);
     Room alsonsoRoom = Room(
         name: "Multicultural center/Alonso Family Room",
         nodes: [MessyNode(latitude: 39.99773, longitude: -83.00821)]);
+        roomList.add(alsonsoRoom);
     Room meetingRoom = Room(
         name: "Great Hall Meeting Room",
         nodes: [MessyNode(latitude: 39.99786, longitude: -83.00843)]);
+        roomList.add(meetingRoom);
     Room infoCenter = Room(
         name: "Information Center",
         nodes: [MessyNode(latitude: 39.99756, longitude: -83.00830)]);
+        roomList.add(infoCenter);
     Room alumniAssociation = Room(
         name: "The Ohio State University Alumni Association",
         nodes: [MessyNode(latitude: 39.99756, longitude: -83.00830)]);
+        roomList.add(alumniAssociation);
     Room woodyRoom = Room(
         name: "Woody's Tavern",
         nodes: [MessyNode(latitude: 39.99776, longitude: -83.008871)]);
+        roomList.add(woodyRoom);
     Room performanceRoom = Room(
         name: "Performance Hall",
         //FIXME
@@ -96,6 +103,7 @@ class RoomList {
     Room unionMarket = Room(
         name: "Union Market",
         nodes: [MessyNode(latitude: 39.99783, longitude: -83.00891)]);
+        roomList.add(unionMarket);
     Room benLounge = Room(
         name: "Ben & Arlene Roth Lounge",
         //FIXME
@@ -106,17 +114,19 @@ class RoomList {
         nodes: [MessyNode(latitude: 39.997715, longitude: -83.008872)]);
     Room espressRoom = Room(
         name: "Espress-OH",
-        //FIXME
         nodes: [MessyNode(latitude: 39.99795, longitude: -83.00923)]);
+        roomList.add(espressRoom);
     Room sloopy = Room(
         name: "Sloopy's Diner",
         nodes: [MessyNode(latitude: 39.99736, longitude: -83.00898)]);
+        roomList.add(sloopy);
 //------------------------------------------------------------------------
 //Second floor
     Room archie = Room(
         name: "Archie M. Griffin Grand Ballroom",
         number: "2131",
         nodes: [MessyNode(latitude: 39.9977404, longitude: -83.0087551)]);
+        roomList.add(archie);
     Room dannyLounge = Room(
         name: "Danny Price Student Lounge",
         //FIXME
@@ -125,6 +135,7 @@ class RoomList {
         name: "Administrative Office Suite",
         number: "2008",
         nodes: [MessyNode(latitude: 39.9975891, longitude: -83.0081661)]);
+        roomList.add(adminRoom);
     Room senateRoom = Room(
         name: "Senate Chamber",
         //FIXME
@@ -133,6 +144,7 @@ class RoomList {
         name: "Ohio Staters, INC. Traditions Room",
         number: "2120",
         nodes: [MessyNode(latitude: 39.9977825, longitude: -83.0089121)]);
+        roomList.add(traditionsRoom);
     Room glassLounge = Room(
         name: "Glass Art Lounge",
         //FIXME
@@ -141,10 +153,12 @@ class RoomList {
         name: "Keith B. Key Center For Student Leadership & Service",
         number: "2096",
         nodes: [MessyNode(latitude: 39.9974682, longitude: -83.0089888)]);
+        roomList.add(keithRoom);
     Room studentAlumniRoom = Room(
         name: "Student-Alumni Council Room",
         number: "2154",
         nodes: [MessyNode(latitude: 39.9978814, longitude: -83.0092567)]);
+        roomList.add(studentAlumniRoom);
     Room sphinxRoom = Room(
         name: "Sphix Centennial Leadership Suite",
         //FIXME
@@ -160,10 +174,12 @@ class RoomList {
         name: "Sigma Phi Epsilon Lounge",
         number: "3000",
         nodes: [MessyNode(latitude: 39.9976788, longitude: -83.0082274)]);
+        roomList.add(sigmaRoom);
     Room undergraduateRoom = Room(
         name: "Undergraduate Admission Welcome Center",
         number: "3002",
         nodes: [MessyNode(latitude: 39.9976161, longitude: -83.0080940)]);
+        roomList.add(undergraduateRoom);
     Room interfaithRoom = Room(
         name: "Interfaith Prayer & Reflection Room",
         //FIXME
@@ -176,6 +192,7 @@ class RoomList {
         name: "Office of the Senior Vice President for Student Life",
         number: "3034",
         nodes: [MessyNode(latitude: 39.9976017, longitude: -83.0084306)]);
+        roomList.add(officeRoom);
     Room willieRoom = Room(
         name: "Willie J. Younge, SR. Off-Campus & Commuter Student Engagement",
         //FIXME
@@ -196,6 +213,7 @@ class RoomList {
         name: "Round Meeting Room",
         number: "3140",
         nodes: [MessyNode(latitude: 39.9977201, longitude: -83.0088323)]);
+        roomList.add(roundRoom);
     Room keithKeyRoom = Room(
         name: "Keith B. Key Center for Student Leadership & Service",
         //FIXME
