@@ -114,12 +114,6 @@ Room unionMarket = Room(
 Room woodyRoom = Room(
   name: "Woody's Tavern",
   nodes: [MessyNode(latitude: 39.99776, longitude: -83.008871)]);
-Room infoCenter = Room(
-  name: "Information Center",
-  nodes: [MessyNode(latitude: 39.99756, longitude: -83.00830)]);
-Room alumniAssociation = Room(
-  name: "The Ohio State University Alumni Association",
-  nodes: [MessyNode(latitude: 39.99756, longitude: -83.00830)]);
 Room meetingRoom = Room(
   name: "Great Hall Meeting Room",
   nodes: [MessyNode(latitude: 39.99786, longitude: -83.00843)]);
@@ -135,10 +129,40 @@ MessyTree firstFloor = MessyTree();
   void addConnections(){
     traversal1.addConnection(traversal2);
     traversal2.addConnection(traversal1);
+    traversal2.addConnection(traversal3);
+    traversal3.addConnection(traversal2);
+    traversal3.addConnection(traversal4);
+    traversal4.addConnection(traversal3);
+    traversal4.addConnection(traversal5);
+    traversal5.addConnection(traversal4);
 
     unionMarket.nodes[0].addConnection(traversal1);
     unionMarket.nodes[0].addConnection(woodyRoom.nodes[0]);
     woodyRoom.nodes[0].addConnection(traversal1);
     woodyRoom.nodes[0].addConnection(unionMarket.nodes[0]);
+    sloopy.nodes[0].addConnection(traversal2);
+    traversal2.addConnection(sloopy.nodes[0]);
+    meetingRoom.nodes[0].addConnection(traversal3);
+    traversal3.addConnection(meetingRoom.nodes[0]);
+    bookRoom.nodes[0].addConnection(traversal4);
+    traversal4.addConnection(bookRoom.nodes[0]);
+    bookRoom.nodes[0].addConnection(traversal5);
+    traversal5.addConnection(bookRoom.nodes[0]);
+    safetyRoom.nodes[0].addConnection(traversal5);
+    traversal5.addConnection(safetyRoom.nodes[0]);
+  }
+
+  void addTreeNodes(){
+    firstFloor.addNode(traversal1);
+    firstFloor.addNode(traversal2);
+    firstFloor.addNode(traversal3);
+    firstFloor.addNode(traversal4);
+    firstFloor.addNode(traversal5);
+    firstFloor.addNode(unionMarket.nodes[0]);
+    firstFloor.addNode(woodyRoom.nodes[0]);
+    firstFloor.addNode(sloopy.nodes[0]);
+    firstFloor.addNode(meetingRoom.nodes[0]);
+    firstFloor.addNode(bookRoom.nodes[0]);
+    firstFloor.addNode(safetyRoom.nodes[0]);
   }
 }
