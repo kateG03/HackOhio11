@@ -2,7 +2,6 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:my_indoor_nav/UI/search_screen2.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 class StartScreen extends StatefulWidget {
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
@@ -83,10 +82,5 @@ class _StartScreenState extends State<StartScreen> {
       ),
     );
   }
-  /*
-  Widget buildQRView(BuildContext context) => QRView(
-    key: qrKey;
-    onQRViewCreated()
-  )
-  */
+
 }
