@@ -130,10 +130,10 @@ class _FloatingActionButtonExampleState
           return Positioned(
             bottom: positions[1] + 75,
             right: positions[0] + 50,
-            child: const Icon(
+            child: Icon(
               Icons.circle_outlined,
               size: 25,
-              color: Colors.red,
+              color: Colors.blue[900],
             ),
           );
         } else {
