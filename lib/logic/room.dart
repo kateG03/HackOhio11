@@ -1,6 +1,8 @@
 //List<String> directions = <String>[];
 //directions.insert("Go from")
 
+// ignore_for_file: unused_local_variable
+
 import 'dart:developer';
 
 import 'messy_tree.dart';
@@ -38,6 +40,7 @@ class RoomList {
     Room creativeRoom = Room(
         name: "Creative Arts Room",
         nodes: [MessyNode(latitude: 39.99791, longitude: -83.00890)]);
+    roomList.add(creativeRoom);
     Room mileRoom = Room(
         name: "Milestones Room",
         nodes: [MessyNode(latitude: 39.99753, longitude: -83.00916)]);
@@ -81,7 +84,7 @@ class RoomList {
         name: "Information Center",
         nodes: [MessyNode(latitude: 39.99756, longitude: -83.00830)]);
     Room alumniAssociation = Room(
-        name: "The Ohio State Unversity Alumni Association",
+        name: "The Ohio State University Alumni Association",
         nodes: [MessyNode(latitude: 39.99756, longitude: -83.00830)]);
     Room woodyRoom = Room(
         name: "Woody's Tavern",
@@ -217,6 +220,6 @@ class RoomList {
         name: "Suzanne M. Scharer Room",
         //FIXME
         nodes: [MessyNode(latitude: 39.997593, longitude: -83.008965)]);
-    log("Done setting up rooms!");
+    log("Done setting up rooms! ${roomList.length}");
   }
 }
