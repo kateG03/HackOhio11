@@ -36,17 +36,12 @@ Room frontEntrance = Room(
 final List<double> thirdEntranceScreenPos = [20, 20];
 
 Room thirdEntrance =
-    Room(name: "3rd Entrance", nodes: [MessyNode(latitude: 0, longitude: 0)]);
+    Room(name: "3rd Entrance", nodes: [MessyNode(latitude: 39.9979736, longitude: -83.0093187)]);
 
 final List<double> fourthEntranceScreenPos = [170, 303];
 
 Room fourthEntrance =
-    Room(name: "4th Entrance", nodes: [MessyNode(latitude: 0, longitude: 0)]);
-
-final List<double> fifthEntranceScreenPos = [300, 9];
-
-Room fifthEntrance =
-    Room(name: "5th Entrance", nodes: [MessyNode(latitude: 0, longitude: 0)]);
+    Room(name: "4th Entrance", nodes: [MessyNode(latitude: 39.9972596, longitude: -83.0086469)]);
 
 class RoomList {
   Future<void> createRoomList() async {
