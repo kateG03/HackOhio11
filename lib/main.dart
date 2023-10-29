@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_indoor_nav/UI/start_screen.dart';
 import 'package:my_indoor_nav/logic/room.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,10 +33,17 @@ class _MyHomePageState extends State<MyHomePage> {
     await RoomList().createRoomList();
   }
 
+  void permissions() async{
+    Map<Permission, PermissionStatus> status = await [
+    Permission.location,
+    ].request();
+  }
+  
   @override
   void initState() {
     super.initState();
     buffer();
+    permissions();
   }
 
   @override

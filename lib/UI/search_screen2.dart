@@ -64,8 +64,18 @@ class _FloatingActionButtonExampleState
   Color unselectedFloorColor = const Color.fromARGB(255, 97, 96, 93);
   Color selectedFloorColor = const Color.fromARGB(255, 198, 36, 36);
   int selectedFloor = 1;
+
   @override
   Widget build(BuildContext context) {
+
+final List<DropdownMenuEntry<int>> labelList =
+        <DropdownMenuEntry<int>>[];
+    int c = 0;
+    for(Room r in roomList) {
+      labelList.add(DropdownMenuEntry(value: c, label: r.name) );
+      c++;
+    }
+
     return Scaffold(
         appBar: AppBar(
           title: const Text('Destination: ',
@@ -83,13 +93,11 @@ class _FloatingActionButtonExampleState
                   height: 50,
                   child: DropdownMenu(
                     leadingIcon: const Icon(Icons.search),
-                    dropdownMenuEntries: const [
-                      DropdownMenuEntry(value: 0, label: "The Ohio State Union")
-                    ],
+                    dropdownMenuEntries: labelList,
                     onSelected: (value) {
                       //spot to set the destination
-                    },
-                  )),
+                    },)
+                  )]),
               const Divider(height: 25, color: Color.fromARGB(0, 0, 0, 0)),
               const Text("Select the floor you are on currently: "),
               const Divider(height: 5, color: Color.fromARGB(0, 0, 0, 0)),
@@ -267,6 +275,6 @@ class _FloatingActionButtonExampleState
                   ]),
                 ],
               ),
-            ]));
+            ]);;);
   }
 }
