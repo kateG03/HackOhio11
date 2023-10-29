@@ -1,6 +1,8 @@
 //List<String> directions = <String>[];
 //directions.insert("Go from")
 
+import 'dart:developer';
+
 import 'messy_tree.dart';
 
 List<Room> roomList = [];
@@ -215,8 +217,6 @@ class RoomList {
         name: "Suzanne M. Scharer Room",
         //FIXME
         nodes: [MessyNode(latitude: 39.997593, longitude: -83.008965)]);
+    log("Done setting up rooms!");
   }
 }
-//var rooms = new Map();
-//rooms[1050]="Performance Hall";
- 
