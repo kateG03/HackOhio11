@@ -41,7 +41,7 @@ class _SpecificScreenState extends State<SpecificScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          iconTheme: IconThemeData(color: Colors.white),
+          iconTheme: const IconThemeData(color: Colors.white),
           title: Text(widget.category,
               style:
                   const TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
