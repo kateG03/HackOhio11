@@ -60,7 +60,7 @@ class _FloatingActionButtonExampleState
     double LSum = 0;
     double ySum = 0;
     double y2Sum = 0;
-    for(int i=0; i<5; i++)
+    for(int i=0; i<4; i++)
     {
       xlSum += x[i]*l[i];
       lSum += l[i];
