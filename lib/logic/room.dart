@@ -9,7 +9,6 @@ final List<double> northHighScreenPos = [330, 182];
 
 final List<double> mainEntranceScreenPos = [95, 169];
 
-
 class Room {
   String name;
   String? number;
@@ -28,7 +27,7 @@ Room highStreetEntrance = Room(
     nodes: [MessyNode(latitude: 39.9976980, longitude: -83.0081285)]);
 
 class RoomList {
-  void main() {
+  Future<void> createRoomList() async {
     //Basement
     Room cowRoom = Room(
         name: "Maudine Cow Room",

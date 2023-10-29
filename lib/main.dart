@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:my_indoor_nav/UI/start_screen.dart';
+import 'package:my_indoor_nav/logic/room.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,6 +28,16 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  void buffer() async {
+    await RoomList().createRoomList();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    buffer();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +46,6 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: StartScreen(),
-      
     );
   }
 }

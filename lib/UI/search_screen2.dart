@@ -46,7 +46,6 @@ class _FloatingActionButtonExampleState
     double lat = pos.latitude;
     log("User is at: $lat, $lon");
 
-
     double screenPosBottom = northHighScreenPos[0] +
         (lat - highStreetEntrance.nodes.first.latitude) *
             ((mainEntranceScreenPos[0] - northHighScreenPos[0]) /
