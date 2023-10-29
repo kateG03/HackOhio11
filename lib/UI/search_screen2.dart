@@ -47,8 +47,7 @@ class _FloatingActionButtonExampleState
     double lon = pos.longitude;
     double lat = pos.latitude;
 
-  
-  /*
+    /*
     List<double> x = [
       northHighScreenPos[0],
       mainEntranceScreenPos[0],
@@ -227,6 +226,37 @@ class _FloatingActionButtonExampleState
               color: const Color.fromARGB(255, 255, 255, 255),
               child: Stack(children: [
                 _getImage(selectedFloor),
+
+                //DEBUG
+                Positioned(
+                    bottom: 75,
+                    left: 165,
+                    child: Column(children: [
+                      const Icon(
+                        Icons.crop_square_sharp,
+                        size: 25,
+                        color: Colors.red,
+                      ),
+                      Text("0, 0",
+                          style: TextStyle(
+                              fontSize: 15, color: Colors.purple[700])),
+                    ])),
+
+                  Positioned(
+                    bottom: 330,
+                    left: 300,
+                    child: Column(children: [
+                      const Icon(
+                        Icons.crop_square_sharp,
+                        size: 25,
+                        color: Colors.red,
+                      ),
+                      Text("300, 330",
+                          style: TextStyle(
+                              fontSize: 15, color: Colors.purple[700])),
+                    ])),
+
+                //END DEBUG
                 StreamBuilder(
                   stream: Geolocator.getPositionStream(),
                   builder: (context, snapshot) {
@@ -237,8 +267,8 @@ class _FloatingActionButtonExampleState
                         positions = value;
                       });
                       return Positioned(
-                          bottom: positions[0],
-                          right: positions[1],
+                          bottom: positions[1],
+                          left: positions[0],
                           child: Column(children: [
                             const Icon(
                               Icons.circle_outlined,
