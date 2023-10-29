@@ -101,8 +101,11 @@ class _FloatingActionButtonExampleState
       c++;
     }
     var floorOne = FirstFloor();
+    floorOne.addConnections();
+    floorOne.addTreeNodes();
     List<Widget> nodeIcons = List.empty(growable: true);
     nodeIcons.add(_getImage(selectedFloor));
+    log(floorOne.firstFloor.graph.keys.length.toString());
     for (MessyNode n in floorOne.firstFloor.graph.keys) {
       log("Node: ${n.latitude}, ${n.longitude}");
       List<double> pos = _getNodeOffsets(n);
