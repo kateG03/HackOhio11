@@ -33,7 +33,7 @@ class _FloatingActionButtonExampleState
       "assets/OUFloor2.png",
       "assets/OUFloor3.png"
     ];
-    return Image.asset(images[newPosition]);
+    return InteractiveViewer(key: UniqueKey(), child: Image.asset(images[newPosition]));
   }
 
   Color unselectedFloorColor = const Color.fromARGB(255, 97, 96, 93);
@@ -132,9 +132,7 @@ class _FloatingActionButtonExampleState
               Container(
                 height: 400,
                 color: const Color.fromARGB(255, 255, 255, 255),
-                child: Stack(children: [
-                  InteractiveViewer(child: _getImage(selectedFloor))
-                ]),
+                child: Stack(children: [_getImage(selectedFloor)]),
               ),
               const Divider(height: 20, color: Color.fromARGB(0, 0, 0, 0)),
               Row(
