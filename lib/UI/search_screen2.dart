@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:my_indoor_nav/UI/specific_screen3.dart';
+import 'package:my_indoor_nav/logic/messy_tree.dart';
 import 'package:my_indoor_nav/logic/room.dart';
 
 const double mapHeight = 400;
@@ -47,58 +48,6 @@ class _FloatingActionButtonExampleState
     double lon = pos.longitude;
     double lat = pos.latitude;
 
-    /*
-    List<double> x = [
-      northHighScreenPos[0],
-      mainEntranceScreenPos[0],
-      thirdEntranceScreenPos[0],
-      fourthEntranceScreenPos[0]
-    ];
-    List<double> l = [
-      highStreetEntrance.nodes.first.latitude,
-      frontEntrance.nodes.first.latitude,
-      thirdEntrance.nodes.first.latitude,
-      fourthEntrance.nodes.first.latitude
-    ];
-    List<double> y = [
-      northHighScreenPos[1],
-      mainEntranceScreenPos[1],
-      thirdEntranceScreenPos[1],
-      fourthEntranceScreenPos[1]
-    ];
-    List<double> L = [
-      highStreetEntrance.nodes.first.longitude,
-      frontEntrance.nodes.first.longitude,
-      thirdEntrance.nodes.first.longitude,
-      fourthEntrance.nodes.first.longitude
-    ];
-    int N = x.length;
-
-    double xlSum = 0;
-    double lSum = 0;
-    double xSum = 0;
-    double x2Sum = 0;
-    double yLSum = 0;
-    double LSum = 0;
-    double ySum = 0;
-    double y2Sum = 0;
-    for (int i = 0; i < 4; i++) {
-      xlSum += x[i] * l[i];
-      lSum += l[i];
-      xSum += x[i];
-      x2Sum += x[i] * x[i];
-      yLSum += y[i] * L[i];
-      LSum += L[i];
-      ySum += y[i];
-      y2Sum += y[i] * y[i];
-    }
-
-    double mx = (N * xlSum - xSum * lSum) / (N * x2Sum - xSum * xSum);
-    double bx = (lSum - mx * xSum) / N;
-    double my = (N * yLSum - ySum * LSum) / (N * y2Sum - ySum * ySum);
-    double by = (LSum - my * ySum) / N;
-
-    */
     double screenPosLeft = northHighScreenPos[0] +
         (lat - highStreetEntrance.nodes.first.latitude) *
             ((mainEntranceScreenPos[0] - northHighScreenPos[0]) /
@@ -111,8 +60,25 @@ class _FloatingActionButtonExampleState
                 (frontEntrance.nodes.first.longitude -
                     highStreetEntrance.nodes.first.longitude));
 
-    //double screenPosBottom = mx * lat + bx;
-    //double screenPosLeft = my * lon + by;
+    return [screenPosLeft, screenPosBottom];
+  }
+
+  List<double> _getNodeOffsets(MessyNode n) {
+    double lon = n.longitude;
+    double lat = n.latitude;
+
+    double screenPosLeft = northHighScreenPos[0] +
+        (lat - highStreetEntrance.nodes.first.latitude) *
+            ((mainEntranceScreenPos[0] - northHighScreenPos[0]) /
+                (frontEntrance.nodes.first.latitude -
+                    highStreetEntrance.nodes.first.latitude));
+
+    double screenPosBottom = northHighScreenPos[1] +
+        (lon - highStreetEntrance.nodes.first.longitude) *
+            ((mainEntranceScreenPos[1] - northHighScreenPos[1]) /
+                (frontEntrance.nodes.first.longitude -
+                    highStreetEntrance.nodes.first.longitude));
+
     return [screenPosLeft, screenPosBottom];
   }
 
@@ -134,6 +100,50 @@ class _FloatingActionButtonExampleState
           )));
       c++;
     }
+    var floorOne = FirstFloor();
+    List<Widget> nodeIcons = List.empty(growable: true);
+    nodeIcons.add(_getImage(selectedFloor));
+    for (MessyNode n in floorOne.firstFloor.graph.keys) {
+      log("Node: ${n.latitude}, ${n.longitude}");
+      List<double> pos = _getNodeOffsets(n);
+      nodeIcons.add(
+        Positioned(
+          bottom: pos[1],
+          left: pos[0],
+          child: const Icon(
+            Icons.crop_square_sharp,
+            size: 25,
+            color: Colors.red,
+          ),
+        ),
+      );
+    }
+    nodeIcons.add(StreamBuilder(
+      stream: Geolocator.getPositionStream(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          log("connection got data");
+          _getOffsets().then((value) {
+            log("User at: ${value[0]}, ${value[1]}");
+            positions = value;
+          });
+          return Positioned(
+            bottom: positions[1] + 75,
+            right: positions[0] + 50,
+            child: const Icon(
+              Icons.circle_outlined,
+              size: 25,
+              color: Colors.red,
+            ),
+          );
+        } else {
+          log("waiting for connection");
+          return const Positioned(
+              bottom: 282, left: 181, child: CircularProgressIndicator());
+        }
+      },
+    ));
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Destination: ',
@@ -224,67 +234,7 @@ class _FloatingActionButtonExampleState
             Container(
               height: mapHeight,
               color: const Color.fromARGB(255, 255, 255, 255),
-              child: Stack(children: [
-                _getImage(selectedFloor),
-
-                //DEBUG
-                Positioned(
-                    bottom: 0,
-                    left: 0,
-                    child: Column(children: [
-                      const Icon(
-                        Icons.crop_square_sharp,
-                        size: 25,
-                        color: Colors.red,
-                      ),
-                      Text("0, 0",
-                          style: TextStyle(
-                              fontSize: 15, color: Colors.purple[700])),
-                    ])),
-
-                Positioned(
-                    bottom: 330,
-                    left: 300,
-                    child: Column(children: [
-                      const Icon(
-                        Icons.crop_square_sharp,
-                        size: 25,
-                        color: Colors.red,
-                      ),
-                      Text("300, 330",
-                          style: TextStyle(
-                              fontSize: 15, color: Colors.purple[700])),
-                    ])),
-
-                //END DEBUG
-                StreamBuilder(
-                  stream: Geolocator.getPositionStream(),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      log("connection got data");
-                      _getOffsets().then((value) {
-                        log("User at: ${value[0]}, ${value[1]}");
-                        positions = value;
-                      });
-                      return Positioned(
-                        bottom: positions[1] + 75,
-                        right: positions[0] + 50,
-                        child: const Icon(
-                          Icons.circle_outlined,
-                          size: 25,
-                          color: Colors.red,
-                        ),
-                      );
-                    } else {
-                      log("waiting for connection");
-                      return const Positioned(
-                          bottom: 282,
-                          left: 181,
-                          child: CircularProgressIndicator());
-                    }
-                  },
-                ),
-              ]),
+              child: Stack(children: nodeIcons),
             ),
             const Divider(height: 20, color: Color.fromARGB(0, 0, 0, 0)),
             Row(
