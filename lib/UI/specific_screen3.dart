@@ -9,8 +9,13 @@ class SpecificScreen extends StatefulWidget {
 }
 
 class _SpecificScreenState extends State<SpecificScreen> {
+  int a = 0;
+  int r = 0;
+  int g = 0;
+  int b = 0;
   Color unselectedFloorColor = const Color.fromARGB(255, 97, 96, 93);
   Color selectedFloorColor = const Color.fromARGB(255, 198, 36, 36);
+  Color badButtonColor = const Color.fromARGB(100, 97, 96, 93);
   int selectedFloor = 1;
 
   Widget _getHighlightedImage(int newPosition) {
@@ -21,7 +26,7 @@ class _SpecificScreenState extends State<SpecificScreen> {
         "assets/OUFloor2BWBATHROOMS.png",
         "assets/OUFloor3BWBATHROOMS.png"
       ];
-      return Image.asset(bathroomImages[newPosition]);
+      return InteractiveViewer(key: UniqueKey(), child: Image.asset(bathroomImages[newPosition]));
     } else if (widget.category == "Stairs & Elevators") {
       List<String> stairsImages = <String>[
         "assets/OUBasementBWSTAIRS.png",
@@ -29,10 +34,20 @@ class _SpecificScreenState extends State<SpecificScreen> {
         "assets/OUFloor2BWSTAIRS.png",
         "assets/OUFloor3BWSTAIRS.png"
       ];
-      return Image.asset(stairsImages[newPosition]);
+      return InteractiveViewer(key: UniqueKey(), child: Image.asset(stairsImages[newPosition]));
     } else {
       selectedFloor = 1;
-      return Image.asset("assets/OUFloor1BWEXIT.png");
+      return InteractiveViewer(key: UniqueKey(), child: Image.asset("assets/OUFloor1BWEXIT.png"));
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.category == "Exits") {
+      unselectedFloorColor = Color.fromARGB(100, 97, 96, 93);
+    } else {
+      unselectedFloorColor = const Color.fromARGB(255, 97, 96, 93);
     }
   }
 
@@ -61,16 +76,18 @@ class _SpecificScreenState extends State<SpecificScreen> {
                 children: [
                   FloatingActionButton(
                       heroTag: "btn8",
+                      onPressed: () {
+                        widget.category != "Exits"
+                            ? () {
+                                setState(() {
+                                  selectedFloor = 0;
+                                });
+                              }
+                            : null;
+                      },
                       backgroundColor: selectedFloor == 0
                           ? selectedFloorColor
                           : unselectedFloorColor,
-                      onPressed: widget.category != "Exits"
-                          ? () {
-                              setState(() {
-                                selectedFloor = 0;
-                              });
-                            }
-                          : null,
                       child: const Text("B",
                           style: TextStyle(
                               color: Color.fromARGB(255, 255, 255, 255),
@@ -98,7 +115,7 @@ class _SpecificScreenState extends State<SpecificScreen> {
                     onPressed: widget.category != "Exits"
                         ? () {
                             setState(() {
-                              selectedFloor = 0;
+                              selectedFloor = 2;
                             });
                           }
                         : null,
@@ -115,7 +132,7 @@ class _SpecificScreenState extends State<SpecificScreen> {
                     onPressed: widget.category != "Exits"
                         ? () {
                             setState(() {
-                              selectedFloor = 0;
+                              selectedFloor = 3;
                             });
                           }
                         : null,
@@ -130,7 +147,8 @@ class _SpecificScreenState extends State<SpecificScreen> {
               Container(
                   height: 400,
                   color: const Color.fromARGB(255, 255, 255, 255),
-                  child: _getHighlightedImage(selectedFloor)),
+                  child: 
+                   _getHighlightedImage(selectedFloor)),
               //color: const  Color.fromARGB(255, 255, 255, 255),
               //child: _getImage(selectedFloor)),
               const Divider(height: 40, color: Color.fromARGB(0, 0, 0, 0)),
