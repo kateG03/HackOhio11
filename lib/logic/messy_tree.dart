@@ -117,9 +117,9 @@ Room woodyRoom = Room(
 Room meetingRoom = Room(
   name: "Great Hall Meeting Room",
   nodes: [MessyNode(latitude: 39.99786, longitude: -83.00843)]);
-Room safetyRoom = Room(
-  name: "OSU Public Safety",
-  nodes: [MessyNode(latitude: 39.99795, longitude: -83.00821)]);
+Room infoCenter = Room(
+  name: "Information Center",
+  nodes: [MessyNode(latitude: 39.99756, longitude: -83.00830)]);
 Room bookRoom = Room(
   name: "The Ohio State University Bookstore",
   nodes: [MessyNode(latitude: 39.99786, longitude: -83.00820)]);
@@ -144,12 +144,14 @@ MessyTree firstFloor = MessyTree();
     traversal2.addConnection(sloopy.nodes[0]);
     meetingRoom.nodes[0].addConnection(traversal3);
     traversal3.addConnection(meetingRoom.nodes[0]);
+    infoCenter.nodes[0].addConnection(traversal2);
+    traversal2.addConnection(infoCenter.nodes[0]);
+    infoCenter.nodes[0].addConnection(traversal3);
+    traversal3.addConnection(infoCenter.nodes[0]);
     bookRoom.nodes[0].addConnection(traversal4);
     traversal4.addConnection(bookRoom.nodes[0]);
     bookRoom.nodes[0].addConnection(traversal5);
     traversal5.addConnection(bookRoom.nodes[0]);
-    safetyRoom.nodes[0].addConnection(traversal5);
-    traversal5.addConnection(safetyRoom.nodes[0]);
   }
 
   void addTreeNodes(){
@@ -162,7 +164,7 @@ MessyTree firstFloor = MessyTree();
     firstFloor.addNode(woodyRoom.nodes[0]);
     firstFloor.addNode(sloopy.nodes[0]);
     firstFloor.addNode(meetingRoom.nodes[0]);
+    firstFloor.addNode(infoCenter.nodes[0]);
     firstFloor.addNode(bookRoom.nodes[0]);
-    firstFloor.addNode(safetyRoom.nodes[0]);
   }
 }
