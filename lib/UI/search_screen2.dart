@@ -47,6 +47,7 @@ class _FloatingActionButtonExampleState
     double lon = pos.longitude;
     double lat = pos.latitude;
 
+    /*
     List<double> x = [
       northHighScreenPos[0],
       mainEntranceScreenPos[0],
@@ -97,7 +98,7 @@ class _FloatingActionButtonExampleState
     double my = (N * yLSum - ySum * LSum) / (N * y2Sum - ySum * ySum);
     double by = (LSum - my * ySum) / N;
 
-    /*
+    */
     double screenPosBottom = northHighScreenPos[0] +
         (lat - highStreetEntrance.nodes.first.latitude) *
             ((mainEntranceScreenPos[0] - northHighScreenPos[0]) /
@@ -109,9 +110,9 @@ class _FloatingActionButtonExampleState
             ((mainEntranceScreenPos[1] - northHighScreenPos[1]) /
                 (frontEntrance.nodes.first.longitude -
                     highStreetEntrance.nodes.first.longitude));
-    */
-    double screenPosBottom = mx * lat + bx;
-    double screenPosLeft = my * lon + by;
+
+    //double screenPosBottom = mx * lat + bx;
+    //double screenPosLeft = my * lon + by;
     return [screenPosBottom, screenPosLeft];
   }
 
