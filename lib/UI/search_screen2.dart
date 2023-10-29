@@ -46,6 +46,38 @@ class _FloatingActionButtonExampleState
     double lat = pos.latitude;
     log("User is at: $lat, $lon");
 
+    List<double> x = [northHighScreenPos[0], mainEntranceScreenPos[0], thirdEntranceScreenPos[0], fourthEntranceScreenPos[0]];
+    List<double> l = [highStreetEntrance.nodes.first.latitude, frontEntrance.nodes.first.latitude, thirdEntrance.nodes.first.latitude, fourthEntrance.nodes.first.latitude];
+    List<double> y = [northHighScreenPos[1], mainEntranceScreenPos[1], thirdEntranceScreenPos[1], fourthEntranceScreenPos[1]];
+    List<double> L = [highStreetEntrance.nodes.first.longitude, frontEntrance.nodes.first.longitude, thirdEntrance.nodes.first.longitude, fourthEntrance.nodes.first.longitude];
+    int N = x.length;
+
+    double xlSum = 0;
+    double lSum = 0;
+    double xSum = 0;
+    double x2Sum = 0;
+    double yLSum = 0;
+    double LSum = 0;
+    double ySum = 0;
+    double y2Sum = 0;
+    for(int i=0; i<5; i++)
+    {
+      xlSum += x[i]*l[i];
+      lSum += l[i];
+      xSum += x[i];
+      x2Sum += x[i]*x[i];
+      yLSum += y[i]*L[i];
+      LSum += L[i];
+      ySum += y[i];
+      y2Sum += y[i]*y[i];
+    }
+
+    double mx = (N*xlSum-xSum*lSum)/(N*x2Sum-xSum*xSum); 
+    double bx = (lSum-mx*xSum)/N;
+    double my = (N*yLSum-ySum*LSum)/(N*y2Sum-ySum*ySum); 
+    double by = (LSum-my*ySum)/N;
+
+    /*
     double screenPosBottom = northHighScreenPos[0] +
         (lat - highStreetEntrance.nodes.first.latitude) *
             ((mainEntranceScreenPos[0] - northHighScreenPos[0]) /
@@ -57,7 +89,9 @@ class _FloatingActionButtonExampleState
             ((mainEntranceScreenPos[1] - northHighScreenPos[1]) /
                 (frontEntrance.nodes.first.longitude -
                     highStreetEntrance.nodes.first.longitude));
-
+    */
+    double screenPosBottom = mx*lat+bx;
+    double screenPosLeft = my*lon+by;
     return [screenPosBottom, screenPosLeft];
   }
 
