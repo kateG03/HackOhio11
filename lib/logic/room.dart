@@ -19,19 +19,18 @@ class Room {
 }
 
 // y - x
-final List<double> northHighScreenPos = [182, 330];
+final List<double> northHighScreenPos = [175, 305];
 
 Room highStreetEntrance = Room(
     name: "High Street Entrance",
-    //39.9976980 - -83.0081285
-    nodes: [MessyNode(latitude: 39.9976636, longitude: -83.0081010)]);
+    nodes: [MessyNode(latitude: 39.997688, longitude: -83.008107)]);
 
-final List<double> mainEntranceScreenPos = [169, 95];
+final List<double> mainEntranceScreenPos = [165, 75];
 
 Room frontEntrance = Room(
     name: "Front Entrance",
     //39.9977124 - -83.0090093
-    nodes: [MessyNode(latitude: 39.9976115, longitude: -83.0089711)]);
+    nodes: [MessyNode(latitude: 39.997629, longitude: -83.008958)]);
 
 final List<double> thirdEntranceScreenPos = [20, 20];
 
