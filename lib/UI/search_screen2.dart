@@ -1,6 +1,9 @@
-import 'dart:math';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:my_indoor_nav/UI/specific_screen3.dart';
+import 'package:my_indoor_nav/logic/logic.dart';
 
 const double mapHeight = 400;
 
@@ -26,8 +29,6 @@ class FloatingActionButtonExample extends StatefulWidget {
 
 class _FloatingActionButtonExampleState
     extends State<FloatingActionButtonExample> {
-  var center = [mapHeight / 2 * cos(45), mapHeight / 2 * sin(45)];
-
   Widget _getImage(int newPosition) {
     List<String> images = <String>[
       "assets/OUBasement.png",
@@ -35,7 +36,30 @@ class _FloatingActionButtonExampleState
       "assets/OUFloor2.png",
       "assets/OUFloor3.png"
     ];
-    return InteractiveViewer(key: UniqueKey(), child: Image.asset(images[newPosition]));
+    return InteractiveViewer(
+        key: UniqueKey(), child: Image.asset(images[newPosition]));
+  }
+
+  Future<List<double>> _getOffsets() async {
+    var pos = await Geolocator.getCurrentPosition();
+    double lon = pos.longitude;
+    double lat = pos.latitude;
+    log("User is at: $lat, $lon");
+  
+
+    double screenPosBottom = northHighScreenPos[0] +
+        (lat - highStreetEntrance.nodes.first.latitude) *
+            ((mainEntranceScreenPos[0] - northHighScreenPos[0]) /
+                (frontEntrance.nodes.first.latitude -
+                    highStreetEntrance.nodes.first.latitude));
+
+    double screenPosLeft = northHighScreenPos[1] +
+        (lon - highStreetEntrance.nodes.first.longitude) *
+            ((mainEntranceScreenPos[1] - northHighScreenPos[1]) /
+                (frontEntrance.nodes.first.longitude -
+                    highStreetEntrance.nodes.first.longitude));
+
+    return [screenPosBottom, screenPosLeft];
   }
 
   Color unselectedFloorColor = const Color.fromARGB(255, 97, 96, 93);
@@ -136,10 +160,34 @@ class _FloatingActionButtonExampleState
                 color: const Color.fromARGB(255, 255, 255, 255),
                 child: Stack(children: [
                   _getImage(selectedFloor),
-                  const Positioned(
-                      bottom: 170.2,
-                      left: 170.2,
-                      child: Icon(Icons.navigation, size: 25)),
+                  FutureBuilder(
+                    future: _getOffsets(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.done &&
+                          snapshot.hasData) {
+                        log("connection done");
+                        log("screen pos: ${snapshot.data?[0]}, ${snapshot.data?[1]}");
+                        return Positioned(
+                            bottom: snapshot.data?[0],
+                            left: snapshot.data?[1],
+                            child: const Icon(
+                              Icons.navigation,
+                              size: 25,
+                              color: Colors.red,
+                            ));
+                      } else {
+                        log("waiting for connection");
+                        return const Positioned(
+                            bottom: 100,
+                            left: 100,
+                            child: Icon(
+                              Icons.circle,
+                              size: 25,
+                              color: Colors.red,
+                            ));
+                      }
+                    },
+                  ),
                 ]),
               ),
               const Divider(height: 20, color: Color.fromARGB(0, 0, 0, 0)),

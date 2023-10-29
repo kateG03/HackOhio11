@@ -45,7 +45,7 @@ class _SpecificScreenState extends State<SpecificScreen> {
   void initState() {
     super.initState();
     if (widget.category == "Exits") {
-      unselectedFloorColor = Color.fromARGB(100, 97, 96, 93);
+      unselectedFloorColor = const Color.fromARGB(100, 97, 96, 93);
     } else {
       unselectedFloorColor = const Color.fromARGB(255, 97, 96, 93);
     }
