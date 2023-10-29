@@ -47,7 +47,8 @@ class _FloatingActionButtonExampleState
     double lon = pos.longitude;
     double lat = pos.latitude;
 
-    /*
+  
+  /*
     List<double> x = [
       northHighScreenPos[0],
       mainEntranceScreenPos[0],
