@@ -130,8 +130,13 @@ Room bookRoom = Room(
   name: "The Ohio State University Bookstore",
   nodes: [MessyNode(latitude: 39.99786, longitude: -83.00820)]);
 
-MessyTree firstFloor
+MessyTree firstFloor = MessyTree();
 
-traversal1.addConnection(traversal2);
+  void addConnections(){
+    traversal1.addConnection(traversal2);
+    traversal2.addConnection(traversal1);
 
+    unionMarket.nodes[0].addConnection(traversal1);
+    unionMarket.nodes[0].addConnection(woodyRoom.nodes[0]);
+  }
 }
