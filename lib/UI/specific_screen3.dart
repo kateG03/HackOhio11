@@ -9,13 +9,8 @@ class SpecificScreen extends StatefulWidget {
 }
 
 class _SpecificScreenState extends State<SpecificScreen> {
-  int a = 0;
-  int r = 0;
-  int g = 0;
-  int b = 0;
   Color unselectedFloorColor = const Color.fromARGB(255, 97, 96, 93);
   Color selectedFloorColor = const Color.fromARGB(255, 198, 36, 36);
-  Color badButtonColor = const Color.fromARGB(100, 97, 96, 93);
   int selectedFloor = 1;
 
   Widget _getHighlightedImage(int newPosition) {
@@ -48,6 +43,7 @@ class _SpecificScreenState extends State<SpecificScreen> {
       unselectedFloorColor = Color.fromARGB(100, 97, 96, 93);
     } else {
       unselectedFloorColor = const Color.fromARGB(255, 97, 96, 93);
+
     }
   }
 
