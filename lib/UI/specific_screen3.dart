@@ -21,7 +21,7 @@ class _SpecificScreenState extends State<SpecificScreen> {
         "assets/OUFloor2BWBATHROOMS.png",
         "assets/OUFloor3BWBATHROOMS.png"
       ];
-      return Image.asset(bathroomImages[newPosition]);
+      return InteractiveViewer(key: UniqueKey(), child: Image.asset(bathroomImages[newPosition]));
     } else if (widget.category == "Stairs & Elevators") {
       List<String> stairsImages = <String>[
         "assets/OUBasementBWSTAIRS.png",
@@ -29,10 +29,10 @@ class _SpecificScreenState extends State<SpecificScreen> {
         "assets/OUFloor2BWSTAIRS.png",
         "assets/OUFloor3BWSTAIRS.png"
       ];
-      return Image.asset(stairsImages[newPosition]);
+      return InteractiveViewer(key: UniqueKey(), child: Image.asset(stairsImages[newPosition]));
     } else {
       selectedFloor = 1;
-      return Image.asset("assets/OUFloor1BWEXIT.png");
+      return InteractiveViewer(key: UniqueKey(), child: Image.asset("assets/OUFloor1BWEXIT.png"));
     }
   }
 
@@ -98,7 +98,7 @@ class _SpecificScreenState extends State<SpecificScreen> {
                     onPressed: widget.category != "Exits"
                         ? () {
                             setState(() {
-                              selectedFloor = 0;
+                              selectedFloor = 2;
                             });
                           }
                         : null,
@@ -115,7 +115,7 @@ class _SpecificScreenState extends State<SpecificScreen> {
                     onPressed: widget.category != "Exits"
                         ? () {
                             setState(() {
-                              selectedFloor = 0;
+                              selectedFloor = 3;
                             });
                           }
                         : null,
@@ -130,8 +130,8 @@ class _SpecificScreenState extends State<SpecificScreen> {
               Container(
                   height: 400,
                   color: const Color.fromARGB(255, 255, 255, 255),
-                  child: InteractiveViewer(child: 
-                   _getHighlightedImage(selectedFloor))),
+                  child: 
+                   _getHighlightedImage(selectedFloor)),
               //color: const  Color.fromARGB(255, 255, 255, 255),
               //child: _getImage(selectedFloor)),
               const Divider(height: 40, color: Color.fromARGB(0, 0, 0, 0)),
