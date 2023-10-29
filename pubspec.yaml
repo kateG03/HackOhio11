@@ -38,7 +38,7 @@ dependencies:
   geolocator: ^10.1.0
   qr: ^3.0.1
   qr_code_scanner: ^1.0.1
-  permission_handler: ^8.3.0
+  permission_handler: ^11.0.1
 
 dev_dependencies:
   change_app_package_name: ^1.1.0
