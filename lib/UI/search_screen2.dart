@@ -70,7 +70,9 @@ class _FloatingActionButtonExampleState
     final List<DropdownMenuEntry<int>> labelList = <DropdownMenuEntry<int>>[];
     int c = 0;
     for (Room r in roomList) {
-      labelList.add(DropdownMenuEntry(value: c, label: r.name));
+      labelList.add(DropdownMenuEntry(value: c, label: r.name, style: ButtonStyle(
+        textStyle: MaterialStateProperty.all<TextStyle>(const TextStyle(fontSize: 11)),
+      )));
       c++;
     }
 
@@ -89,7 +91,9 @@ class _FloatingActionButtonExampleState
             ),
             SizedBox(
                 height: 50,
-                child: DropdownMenu(
+                child: 
+                DropdownMenu(
+                  menuHeight: 200,
                   leadingIcon: const Icon(Icons.search),
                   dropdownMenuEntries: labelList,
                   onSelected: (value) {
