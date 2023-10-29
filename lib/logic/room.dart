@@ -3,6 +3,8 @@
 
 import 'messy_tree.dart';
 
+List<Room> roomList = [];
+
 final List<double> northHighScreenPos = [330, 182];
 
 final List<double> mainEntranceScreenPos = [95, 169];
@@ -27,7 +29,6 @@ Room highStreetEntrance = Room(
 
 class RoomList {
   void main() {
-    List<Room> roomList = [];
     //Basement
     Room cowRoom = Room(
         name: "Maudine Cow Room",
