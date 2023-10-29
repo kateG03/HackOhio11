@@ -36,14 +36,18 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app needs access to location when open.</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>This app needs access to location when in the background.</string>
-	<key>NSLocationTemporaryUsageDescriptionDictionary</key>
-	<dict>
-  	<key>YourPurposeKey</key>
-  	<string>The example App requires temporary access to the device&apos;s precise location.</string>
-</dict>
+    <string>Need location when in use</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>Always and when in use!</string>
+    <key>NSLocationUsageDescription</key>
+    <string>Older devices need location.</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Can I have location always?</string>
+
+	<key>NSCameraUsageDescription</key>
+    <string>camera</string>
+
 </dict>
 </plist>
