@@ -7,6 +7,8 @@ import 'package:my_indoor_nav/logic/room.dart';
 
 const double mapHeight = 400;
 
+List<double> positions = [0, 0];
+
 class FloatingActionButtonExampleApp extends StatelessWidget {
   const FloatingActionButtonExampleApp({super.key});
 
@@ -44,12 +46,31 @@ class _FloatingActionButtonExampleState
     var pos = await Geolocator.getCurrentPosition();
     double lon = pos.longitude;
     double lat = pos.latitude;
-    log("User is at: $lat, $lon");
 
-    List<double> x = [northHighScreenPos[0], mainEntranceScreenPos[0], thirdEntranceScreenPos[0], fourthEntranceScreenPos[0]];
-    List<double> l = [highStreetEntrance.nodes.first.latitude, frontEntrance.nodes.first.latitude, thirdEntrance.nodes.first.latitude, fourthEntrance.nodes.first.latitude];
-    List<double> y = [northHighScreenPos[1], mainEntranceScreenPos[1], thirdEntranceScreenPos[1], fourthEntranceScreenPos[1]];
-    List<double> L = [highStreetEntrance.nodes.first.longitude, frontEntrance.nodes.first.longitude, thirdEntrance.nodes.first.longitude, fourthEntrance.nodes.first.longitude];
+    List<double> x = [
+      northHighScreenPos[0],
+      mainEntranceScreenPos[0],
+      thirdEntranceScreenPos[0],
+      fourthEntranceScreenPos[0]
+    ];
+    List<double> l = [
+      highStreetEntrance.nodes.first.latitude,
+      frontEntrance.nodes.first.latitude,
+      thirdEntrance.nodes.first.latitude,
+      fourthEntrance.nodes.first.latitude
+    ];
+    List<double> y = [
+      northHighScreenPos[1],
+      mainEntranceScreenPos[1],
+      thirdEntranceScreenPos[1],
+      fourthEntranceScreenPos[1]
+    ];
+    List<double> L = [
+      highStreetEntrance.nodes.first.longitude,
+      frontEntrance.nodes.first.longitude,
+      thirdEntrance.nodes.first.longitude,
+      fourthEntrance.nodes.first.longitude
+    ];
     int N = x.length;
 
     double xlSum = 0;
@@ -60,22 +81,21 @@ class _FloatingActionButtonExampleState
     double LSum = 0;
     double ySum = 0;
     double y2Sum = 0;
-    for(int i=0; i<4; i++)
-    {
-      xlSum += x[i]*l[i];
+    for (int i = 0; i < 4; i++) {
+      xlSum += x[i] * l[i];
       lSum += l[i];
       xSum += x[i];
-      x2Sum += x[i]*x[i];
-      yLSum += y[i]*L[i];
+      x2Sum += x[i] * x[i];
+      yLSum += y[i] * L[i];
       LSum += L[i];
       ySum += y[i];
-      y2Sum += y[i]*y[i];
+      y2Sum += y[i] * y[i];
     }
 
-    double mx = (N*xlSum-xSum*lSum)/(N*x2Sum-xSum*xSum); 
-    double bx = (lSum-mx*xSum)/N;
-    double my = (N*yLSum-ySum*LSum)/(N*y2Sum-ySum*ySum); 
-    double by = (LSum-my*ySum)/N;
+    double mx = (N * xlSum - xSum * lSum) / (N * x2Sum - xSum * xSum);
+    double bx = (lSum - mx * xSum) / N;
+    double my = (N * yLSum - ySum * LSum) / (N * y2Sum - ySum * ySum);
+    double by = (LSum - my * ySum) / N;
 
     /*
     double screenPosBottom = northHighScreenPos[0] +
@@ -90,8 +110,8 @@ class _FloatingActionButtonExampleState
                 (frontEntrance.nodes.first.longitude -
                     highStreetEntrance.nodes.first.longitude));
     */
-    double screenPosBottom = mx*lat+bx;
-    double screenPosLeft = my*lon+by;
+    double screenPosBottom = mx * lat + bx;
+    double screenPosLeft = my * lon + by;
     return [screenPosBottom, screenPosLeft];
   }
 
@@ -104,12 +124,15 @@ class _FloatingActionButtonExampleState
     final List<DropdownMenuEntry<int>> labelList = <DropdownMenuEntry<int>>[];
     int c = 0;
     for (Room r in roomList) {
-      labelList.add(DropdownMenuEntry(value: c, label: r.name, style: ButtonStyle(
-        textStyle: MaterialStateProperty.all<TextStyle>(const TextStyle(fontSize: 11)),
-      )));
+      labelList.add(DropdownMenuEntry(
+          value: c,
+          label: r.name,
+          style: ButtonStyle(
+            textStyle: MaterialStateProperty.all<TextStyle>(
+                const TextStyle(fontSize: 11)),
+          )));
       c++;
     }
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Destination: ',
@@ -125,8 +148,7 @@ class _FloatingActionButtonExampleState
             ),
             SizedBox(
                 height: 50,
-                child: 
-                DropdownMenu(
+                child: DropdownMenu(
                   menuHeight: 200,
                   leadingIcon: const Icon(Icons.search),
                   dropdownMenuEntries: labelList,
@@ -203,31 +225,34 @@ class _FloatingActionButtonExampleState
               color: const Color.fromARGB(255, 255, 255, 255),
               child: Stack(children: [
                 _getImage(selectedFloor),
-                FutureBuilder(
-                  future: _getOffsets(),
+                StreamBuilder(
+                  stream: Geolocator.getPositionStream(),
                   builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.done &&
-                        snapshot.hasData) {
-                      log("connection done");
-                      log("screen pos: ${snapshot.data?[0]}, ${snapshot.data?[1]}");
+                    if (snapshot.hasData) {
+                      log("connection got data");
+                      _getOffsets().then((value) {
+                        log("User at: ${value[0]}, ${value[1]}");
+                        positions = value;
+                      });
                       return Positioned(
-                          bottom: snapshot.data?[0],
-                          right: snapshot.data?[1],
-                          child: const Icon(
-                            Icons.circle_outlined,
-                            size: 25,
-                            color: Colors.red,
-                          ));
+                          bottom: positions[0],
+                          right: positions[1],
+                          child: Column(children: [
+                            const Icon(
+                              Icons.circle_outlined,
+                              size: 25,
+                              color: Colors.red,
+                            ),
+                            Text("${positions[0]}, ${positions[1]}",
+                                style: TextStyle(
+                                    fontSize: 15, color: Colors.purple[700])),
+                          ]));
                     } else {
                       log("waiting for connection");
                       return const Positioned(
-                          bottom: 100,
-                          left: 100,
-                          child: Icon(
-                            Icons.circle,
-                            size: 25,
-                            color: Colors.red,
-                          ));
+                          bottom: 282,
+                          left: 181,
+                          child: CircularProgressIndicator());
                     }
                   },
                 ),
