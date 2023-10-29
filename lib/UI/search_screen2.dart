@@ -132,7 +132,16 @@ class _FloatingActionButtonExampleState
               Container(
                   height: 400,
                   color: const Color.fromARGB(255, 255, 255, 255),
-                  child: _getImage(selectedFloor)),
+                  child: 
+                  
+                  Stack(
+                    children: [
+ _getImage(selectedFloor)
+                    ]
+                 ),
+
+
+
               const Divider(height: 20, color: Color.fromARGB(0, 0, 0, 0)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -167,7 +176,7 @@ class _FloatingActionButtonExampleState
                               context,
                               MaterialPageRoute(
                                   builder: (context) => const SpecificScreen(
-                                        category: 'Stairs',
+                                        category: 'Stairs & Elevators',
                                       )));
                         });
                       },
