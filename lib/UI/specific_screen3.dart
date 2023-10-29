@@ -72,15 +72,13 @@ class _SpecificScreenState extends State<SpecificScreen> {
                 children: [
                   FloatingActionButton(
                       heroTag: "btn8",
-                      onPressed: () {
-                        widget.category != "Exits"
+                      onPressed: widget.category != "Exits"
                             ? () {
                                 setState(() {
                                   selectedFloor = 0;
                                 });
                               }
-                            : null;
-                      },
+                            : null,
                       backgroundColor: selectedFloor == 0
                           ? selectedFloorColor
                           : unselectedFloorColor,
