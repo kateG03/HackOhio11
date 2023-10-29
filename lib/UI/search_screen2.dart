@@ -67,214 +67,210 @@ class _FloatingActionButtonExampleState
 
   @override
   Widget build(BuildContext context) {
-
-final List<DropdownMenuEntry<int>> labelList =
-        <DropdownMenuEntry<int>>[];
+    final List<DropdownMenuEntry<int>> labelList = <DropdownMenuEntry<int>>[];
     int c = 0;
-    for(Room r in roomList) {
-      labelList.add(DropdownMenuEntry(value: c, label: r.name) );
+    for (Room r in roomList) {
+      labelList.add(DropdownMenuEntry(value: c, label: r.name));
       c++;
     }
 
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Destination: ',
-              style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
-          backgroundColor: const Color.fromARGB(255, 198, 36, 36),
-        ),
-        body: Column(
-            //mainAxisAlignment: MainAxisAlignment,
-            children: [
-              const Divider(
-                height: 10,
-                color: Color.fromARGB(0, 0, 0, 0),
-              ),
-              SizedBox(
-                  height: 50,
-                  child: DropdownMenu(
-                    leadingIcon: const Icon(Icons.search),
-                    dropdownMenuEntries: labelList,
-                    onSelected: (value) {
-                      //spot to set the destination
-                    },)
-                  )]),
-              const Divider(height: 25, color: Color.fromARGB(0, 0, 0, 0)),
-              const Text("Select the floor you are on currently: "),
-              const Divider(height: 5, color: Color.fromARGB(0, 0, 0, 0)),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  FloatingActionButton(
-                      heroTag: "btn8",
-                      backgroundColor: selectedFloor == 0
-                          ? selectedFloorColor
-                          : unselectedFloorColor,
-                      onPressed: () {
-                        setState(() {
-                          selectedFloor = 0;
-                        });
-                      },
-                      child: const Text("B",
-                          style: TextStyle(
-                              color: Color.fromARGB(255, 255, 255, 255)))),
-                  FloatingActionButton(
-                    heroTag: "btn5",
-                    backgroundColor: selectedFloor == 1
+      appBar: AppBar(
+        title: const Text('Destination: ',
+            style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
+        backgroundColor: const Color.fromARGB(255, 198, 36, 36),
+      ),
+      body: Column(
+          //mainAxisAlignment: MainAxisAlignment,
+          children: [
+            const Divider(
+              height: 10,
+              color: Color.fromARGB(0, 0, 0, 0),
+            ),
+            SizedBox(
+                height: 50,
+                child: DropdownMenu(
+                  leadingIcon: const Icon(Icons.search),
+                  dropdownMenuEntries: labelList,
+                  onSelected: (value) {
+                    //spot to set the destination
+                  },
+                )),
+            const Divider(height: 25, color: Color.fromARGB(0, 0, 0, 0)),
+            const Text("Select the floor you are on currently: "),
+            const Divider(height: 5, color: Color.fromARGB(0, 0, 0, 0)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                FloatingActionButton(
+                    heroTag: "btn8",
+                    backgroundColor: selectedFloor == 0
                         ? selectedFloorColor
                         : unselectedFloorColor,
                     onPressed: () {
                       setState(() {
-                        selectedFloor = 1;
+                        selectedFloor = 0;
                       });
                     },
-                    child: const Text("1",
+                    child: const Text("B",
                         style: TextStyle(
-                            color: Color.fromARGB(255, 255, 255, 255))),
-                  ),
+                            color: Color.fromARGB(255, 255, 255, 255)))),
+                FloatingActionButton(
+                  heroTag: "btn5",
+                  backgroundColor: selectedFloor == 1
+                      ? selectedFloorColor
+                      : unselectedFloorColor,
+                  onPressed: () {
+                    setState(() {
+                      selectedFloor = 1;
+                    });
+                  },
+                  child: const Text("1",
+                      style:
+                          TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
+                ),
+                FloatingActionButton(
+                  heroTag: "btn6",
+                  backgroundColor: selectedFloor == 2
+                      ? selectedFloorColor
+                      : unselectedFloorColor,
+                  onPressed: () {
+                    setState(() {
+                      selectedFloor = 2;
+                    });
+                  },
+                  child: const Text("2",
+                      style:
+                          TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
+                ),
+                FloatingActionButton(
+                  heroTag: "btn7",
+                  backgroundColor: selectedFloor == 3
+                      ? selectedFloorColor
+                      : unselectedFloorColor,
+                  onPressed: () {
+                    setState(() {
+                      selectedFloor = 3;
+                    });
+                  },
+                  child: const Text("3",
+                      style:
+                          TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
+                ),
+              ],
+            ),
+            const Divider(height: 18, color: Color.fromARGB(0, 0, 0, 0)),
+            Container(
+              height: mapHeight,
+              color: const Color.fromARGB(255, 255, 255, 255),
+              child: Stack(children: [
+                _getImage(selectedFloor),
+                FutureBuilder(
+                  future: _getOffsets(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done &&
+                        snapshot.hasData) {
+                      log("connection done");
+                      log("screen pos: ${snapshot.data?[0]}, ${snapshot.data?[1]}");
+                      return Positioned(
+                          bottom: fifthEntranceScreenPos[0],
+                          left: fifthEntranceScreenPos[1],
+                          child: const Icon(
+                            Icons.circle_outlined,
+                            size: 25,
+                            color: Colors.red,
+                          ));
+                    } else {
+                      log("waiting for connection");
+                      return const Positioned(
+                          bottom: 100,
+                          left: 100,
+                          child: Icon(
+                            Icons.circle,
+                            size: 25,
+                            color: Colors.red,
+                          ));
+                    }
+                  },
+                ),
+              ]),
+            ),
+            const Divider(height: 20, color: Color.fromARGB(0, 0, 0, 0)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Column(children: [
                   FloatingActionButton(
-                    heroTag: "btn6",
-                    backgroundColor: selectedFloor == 2
-                        ? selectedFloorColor
-                        : unselectedFloorColor,
+                    backgroundColor: const Color.fromARGB(255, 198, 38, 38),
+                    heroTag: "btn1",
                     onPressed: () {
                       setState(() {
-                        selectedFloor = 2;
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SpecificScreen(
+                                      category: 'Bathrooms',
+                                    )));
                       });
                     },
-                    child: const Text("2",
-                        style: TextStyle(
-                            color: Color.fromARGB(255, 255, 255, 255))),
+                    child: const Icon(
+                      Icons.wc,
+                      color: Colors.white,
+                      size: 35,
+                    ),
                   ),
-                  FloatingActionButton(
-                    heroTag: "btn7",
-                    backgroundColor: selectedFloor == 3
-                        ? selectedFloorColor
-                        : unselectedFloorColor,
-                    onPressed: () {
-                      setState(() {
-                        selectedFloor = 3;
-                      });
-                    },
-                    child: const Text("3",
-                        style: TextStyle(
-                            color: Color.fromARGB(255, 255, 255, 255))),
-                  ),
-                ],
-              ),
-              const Divider(height: 18, color: Color.fromARGB(0, 0, 0, 0)),
-              Container(
-                height: mapHeight,
-                color: const Color.fromARGB(255, 255, 255, 255),
-                child: Stack(children: [
-                  _getImage(selectedFloor),
-                  FutureBuilder(
-                    future: _getOffsets(),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.done &&
-                          snapshot.hasData) {
-                        log("connection done");
-                        log("screen pos: ${snapshot.data?[0]}, ${snapshot.data?[1]}");
-                        return Positioned(
-                            bottom: fifthEntranceScreenPos[0],
-                            left: fifthEntranceScreenPos[1],
-                            child: const Icon(
-                              Icons.circle_outlined,
-                              size: 25,
-                              color: Colors.red,
-                            ));
-                      } else {
-                        log("waiting for connection");
-                        return const Positioned(
-                            bottom: 100,
-                            left: 100,
-                            child: Icon(
-                              Icons.circle,
-                              size: 25,
-                              color: Colors.red,
-                            ));
-                      }
-                    },
-                  ),
+                  const Divider(height: 10, color: Color.fromARGB(0, 0, 0, 0)),
+                  const Text("Bathrooms")
                 ]),
-              ),
-              const Divider(height: 20, color: Color.fromARGB(0, 0, 0, 0)),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Column(children: [
-                    FloatingActionButton(
-                      backgroundColor: const Color.fromARGB(255, 198, 38, 38),
-                      heroTag: "btn1",
-                      onPressed: () {
-                        setState(() {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const SpecificScreen(
-                                        category: 'Bathrooms',
-                                      )));
-                        });
-                      },
-                      child: const Icon(
-                        Icons.wc,
-                        color: Colors.white,
-                        size: 35,
-                      ),
+                Column(children: [
+                  FloatingActionButton(
+                    backgroundColor: const Color.fromARGB(255, 198, 38, 38),
+                    heroTag: "btn2",
+                    onPressed: () {
+                      setState(() {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SpecificScreen(
+                                      category: 'Stairs & Elevators',
+                                    )));
+                      });
+                    },
+                    child: const Icon(
+                      Icons.stairs_rounded,
+                      color: Colors.white,
+                      size: 35,
                     ),
-                    const Divider(
-                        height: 10, color: Color.fromARGB(0, 0, 0, 0)),
-                    const Text("Bathrooms")
-                  ]),
-                  Column(children: [
-                    FloatingActionButton(
-                      backgroundColor: const Color.fromARGB(255, 198, 38, 38),
-                      heroTag: "btn2",
-                      onPressed: () {
-                        setState(() {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const SpecificScreen(
-                                        category: 'Stairs & Elevators',
-                                      )));
-                        });
-                      },
-                      child: const Icon(
-                        Icons.stairs_rounded,
-                        color: Colors.white,
-                        size: 35,
-                      ),
+                  ),
+                  const Divider(height: 10, color: Color.fromARGB(0, 0, 0, 0)),
+                  const Text("Stairs")
+                ]),
+                Column(children: [
+                  FloatingActionButton(
+                    backgroundColor: const Color.fromARGB(255, 198, 38, 38),
+                    heroTag: "btn3",
+                    onPressed: () {
+                      setState(() {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SpecificScreen(
+                                      category: 'Exits',
+                                    )));
+                      });
+                    },
+                    child: const Icon(
+                      Icons.door_back_door_outlined,
+                      color: Colors.white,
+                      size: 35,
                     ),
-                    const Divider(
-                        height: 10, color: Color.fromARGB(0, 0, 0, 0)),
-                    const Text("Stairs")
-                  ]),
-                  Column(children: [
-                    FloatingActionButton(
-                      backgroundColor: const Color.fromARGB(255, 198, 38, 38),
-                      heroTag: "btn3",
-                      onPressed: () {
-                        setState(() {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const SpecificScreen(
-                                        category: 'Exits',
-                                      )));
-                        });
-                      },
-                      child: const Icon(
-                        Icons.door_back_door_outlined,
-                        color: Colors.white,
-                        size: 35,
-                      ),
-                    ),
-                    const Divider(
-                        height: 10, color: Color.fromARGB(0, 0, 0, 0)),
-                    const Text("Exits")
-                  ]),
-                ],
-              ),
-            ]);;);
+                  ),
+                  const Divider(height: 10, color: Color.fromARGB(0, 0, 0, 0)),
+                  const Text("Exits")
+                ]),
+              ],
+            )
+          ]),
+    );
   }
 }
