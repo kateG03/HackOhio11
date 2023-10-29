@@ -31,10 +31,10 @@ class _FloatingActionButtonExampleState
     extends State<FloatingActionButtonExample> {
   Widget _getImage(int newPosition) {
     List<String> images = <String>[
-      "assets/OUBasement.png",
-      "assets/OUFloor1.png",
-      "assets/OUFloor2.png",
-      "assets/OUFloor3.png"
+      "assets/OUBasementGrey.png",
+      "assets/OUFloor1Grey.png",
+      "assets/OUFloor2Grey.png",
+      "assets/OUFloor3Grey.png"
     ];
     return InteractiveViewer(
         key: UniqueKey(), child: Image.asset(images[newPosition]));
