@@ -138,5 +138,7 @@ MessyTree firstFloor = MessyTree();
 
     unionMarket.nodes[0].addConnection(traversal1);
     unionMarket.nodes[0].addConnection(woodyRoom.nodes[0]);
+    woodyRoom.nodes[0].addConnection(traversal1);
+    woodyRoom.nodes[0].addConnection(unionMarket.nodes[0]);
   }
 }
