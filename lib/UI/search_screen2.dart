@@ -1,7 +1,8 @@
-import 'dart:developer';
-
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:my_indoor_nav/UI/specific_screen3.dart';
+
+const double mapHeight = 400;
 
 class FloatingActionButtonExampleApp extends StatelessWidget {
   const FloatingActionButtonExampleApp({super.key});
@@ -25,8 +26,9 @@ class FloatingActionButtonExample extends StatefulWidget {
 
 class _FloatingActionButtonExampleState
     extends State<FloatingActionButtonExample> {
+  var center = [mapHeight / 2 * cos(45), mapHeight / 2 * sin(45)];
+
   Widget _getImage(int newPosition) {
-    log("newPosition: $newPosition");
     List<String> images = <String>[
       "assets/OUBasement.png",
       "assets/OUFloor1.png",
@@ -130,9 +132,15 @@ class _FloatingActionButtonExampleState
               ),
               const Divider(height: 18, color: Color.fromARGB(0, 0, 0, 0)),
               Container(
-                height: 400,
+                height: mapHeight,
                 color: const Color.fromARGB(255, 255, 255, 255),
-                child: Stack(children: [_getImage(selectedFloor)]),
+                child: Stack(children: [
+                  _getImage(selectedFloor),
+                  const Positioned(
+                      bottom: 170.2,
+                      left: 170.2,
+                      child: Icon(Icons.navigation, size: 25)),
+                ]),
               ),
               const Divider(height: 20, color: Color.fromARGB(0, 0, 0, 0)),
               Row(
