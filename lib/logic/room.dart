@@ -3,6 +3,11 @@
 
 import 'messy_tree.dart';
 
+final List<double> northHighScreenPos = [330, 182];
+
+final List<double> mainEntranceScreenPos = [95, 169];
+
+
 class Room {
   String name;
   String? number;
@@ -11,6 +16,14 @@ class Room {
 
   Room({required this.name, this.number, required this.nodes});
 }
+
+Room frontEntrance = Room(
+    name: "Front Entrance",
+    nodes: [MessyNode(latitude: 39.9977124, longitude: -83.0090093)]);
+
+Room highStreetEntrance = Room(
+    name: "High Street Entrance",
+    nodes: [MessyNode(latitude: 39.9976980, longitude: -83.0081285)]);
 
 class RoomList {
   void main() {

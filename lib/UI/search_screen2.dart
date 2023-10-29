@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:my_indoor_nav/UI/specific_screen3.dart';
-import 'package:my_indoor_nav/logic/logic.dart';
+import 'package:my_indoor_nav/logic/room.dart';
 
 const double mapHeight = 400;
 
@@ -45,7 +45,7 @@ class _FloatingActionButtonExampleState
     double lon = pos.longitude;
     double lat = pos.latitude;
     log("User is at: $lat, $lon");
-  
+
 
     double screenPosBottom = northHighScreenPos[0] +
         (lat - highStreetEntrance.nodes.first.latitude) *
