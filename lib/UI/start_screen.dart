@@ -83,10 +83,5 @@ class _StartScreenState extends State<StartScreen> {
       ),
     );
   }
-  /*
-  Widget buildQRView(BuildContext context) => QRView(
-    key: qrKey;
-    onQRViewCreated()
-  )
-  */
+
 }

@@ -8,6 +8,7 @@ import 'dart:developer';
 import 'messy_tree.dart';
 
 List<Room> roomList = [];
+List<Room> extraList = [];
 
 class Room {
   String name;
@@ -27,6 +28,9 @@ Room highStreetEntrance = Room(
     nodes: [MessyNode(latitude: 39.9976636, longitude: -83.0081010)]);
 
 final List<double> mainEntranceScreenPos = [169, 95];
+
+
+
 
 Room frontEntrance = Room(
     name: "Front Entrance",
@@ -251,6 +255,27 @@ class RoomList {
         name: "Suzanne M. Scharer Room",
         //FIXME
         nodes: [MessyNode(latitude: 39.997593, longitude: -83.008965)]);
+
+    Room elevator = Room(
+        name: "Elevator",
+        nodes: [MessyNode(latitude: 39.9976857, longitude: -83.0086884)]);
+    extraList.add(elevator);
+
+    Room mainStairwell = Room(
+        name: "Main Stairwell",
+        nodes: [MessyNode(latitude: 39.9976179, longitude: -83.0087810)]);
+    extraList.add(mainStairwell);
+
+    Room backStairwell = Room(
+        name: "Back Stairwell",
+        nodes: [MessyNode(latitude: 39.9976549, longitude: -83.0089536)]);
+    extraList.add(backStairwell);
+
+      Room restrooms = Room(
+        name: "Restrooms",
+        nodes: [MessyNode(latitude: 39.9975686, longitude: -83.0087116)]);
+    extraList.add(restrooms);
+
     log("Done setting up rooms! ${roomList.length}");
   }
 }
