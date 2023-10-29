@@ -24,10 +24,10 @@ class MessyNode {
 class MessyTree {
   MessyNode head = MessyNode(latitude: 0, longitude: 0);
 
-  var graph;
+  var graph = <MessyNode,Map<MessyNode,double>>{};
 
   void addNode(MessyNode node) {
-    var temp;
+    var temp = <MessyNode,double>{};
     for (MessyNode n in node.connections) {
       temp[n]=Geolocator.distanceBetween(node.latitude,node.longitude,n.latitude,n.longitude);
     }
@@ -44,21 +44,65 @@ class MessyTree {
     return path;
   }
 
-  List<MessyNode> getPaths(MessyNode start, MessyNode end, MessyNode previous) {
-    List<MessyNode> path = List.empty(growable: true);
+  List<MessyNode> findShortestPath(MessyNode start, MessyNode end) {
+    // Create a map to store the shortest distance from the start node to each node
+    final distances = <MessyNode, double>{};
+  
+    // Create a map to store the previous node in the shortest path
+    final previous = <MessyNode, MessyNode>{};
+  
+    // Create a set to store the unvisited nodes
+    final unvisited = <MessyNode>{};
 
-    if (start.isConnected(end)) {
-      path = [start, end];
-    } else {
-      for (MessyNode n in start.connections) {
-        if (!n.isEqual(previous)) {
-          path = getPaths(n, end, start);
-          if (path.isNotEmpty) {
-            path.insert(0, start);
-          }
+    // Initialize the distances and previous map
+    for (final node in graph.keys) {
+      distances[node] = double.infinity;
+      previous[node] = MessyNode(latitude: 0, longitude: 0);
+      unvisited.add(node);
+    }
+  
+    // Set the distance of the start node to 0
+    distances[start] = 0;
+  
+    // Loop until all nodes are visited
+    while (unvisited.isNotEmpty) {
+      // Find the node with the smallest distance
+      final currentNode = unvisited.reduce((a, b) => distances[a]! < distances[b]! ? a : b);
+  
+      // Remove the current node from the unvisited set
+      unvisited.remove(currentNode);
+  
+      // Stop the loop if the current node is the end node
+      if (currentNode == end) {
+        break;
+      }
+  
+      // Update the distances of the adjacent nodes
+      for (final neighbor in graph[currentNode]!.keys) {
+        final distance = graph[currentNode]![neighbor];
+        final totalDistance = distances[currentNode]! + distance!;
+  
+        if (totalDistance < distances[neighbor]!) {
+          distances[neighbor] = totalDistance;
+          previous[neighbor] = currentNode;
         }
       }
     }
+  
+    // Check if there is a path between the start and end node
+    if (previous[end] == null) {
+      throw StateError('There is no path between the start and end node.');
+    }
+  
+    // Reconstruct the shortest path
+    final path = <MessyNode>[];
+    var currentNode = end;
+  
+    while (!currentNode.isEqual(MessyNode(latitude: 0, longitude: 0))) {
+      path.insert(0, currentNode);
+      currentNode = previous[currentNode]!;
+    }
+  
     return path;
   }
 }
