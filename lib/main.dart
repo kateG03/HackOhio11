@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:my_indoor_nav/UI/start_screen.dart';
 import 'package:my_indoor_nav/logic/room.dart';
@@ -32,9 +34,21 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   void buffer() async {
     await RoomList().createRoomList();
+
+    var status = await Permission.locationWhenInUse.status;
+    if (!status.isGranted) {
+      await Permission.locationWhenInUse.request();
+    } else {
+      log("Permission 1 already granted");
+    }
+    status = await Permission.locationAlways.status;
+    if (!status.isGranted) {
+      await Permission.locationAlways.request();
+    } else {
+      log("Permission 2 already granted");
+    }
   }
 
-  
   @override
   void initState() {
     super.initState();
