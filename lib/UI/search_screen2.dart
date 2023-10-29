@@ -10,6 +10,8 @@ const double mapHeight = 400;
 
 List<double> positions = [0, 0];
 
+int pickedNode = -1;
+
 class FloatingActionButtonExampleApp extends StatelessWidget {
   const FloatingActionButtonExampleApp({super.key});
 
@@ -100,6 +102,23 @@ class _FloatingActionButtonExampleState
           )));
       c++;
     }
+
+    Icon checkIcon(int pos) {
+      if (pickedNode == pos) {
+        return Icon(
+          Icons.flag_circle,
+          size: 25,
+          color: Colors.green[900]!,
+        );
+      } else {
+        return Icon(
+          Icons.crop_square_sharp,
+          size: 25,
+          color: Colors.red[900]!,
+        );
+      }
+    }
+
     var floorOne = FirstFloor();
     floorOne.addConnections();
     floorOne.addTreeNodes();
@@ -111,14 +130,7 @@ class _FloatingActionButtonExampleState
       List<double> pos = _getNodeOffsets(n);
       nodeIcons.add(
         Positioned(
-          bottom: pos[1],
-          left: pos[0],
-          child: const Icon(
-            Icons.crop_square_sharp,
-            size: 25,
-            color: Colors.red,
-          ),
-        ),
+            top: pos[1], left: pos[0], child: checkIcon(nodeIcons.length)),
       );
     }
     nodeIcons.add(StreamBuilder(
@@ -167,7 +179,9 @@ class _FloatingActionButtonExampleState
                   leadingIcon: const Icon(Icons.search),
                   dropdownMenuEntries: labelList,
                   onSelected: (value) {
-                    //spot to set the destination
+                    setState(() {
+                      pickedNode = value!;
+                    });
                   },
                 )),
             const Divider(height: 25, color: Color.fromARGB(0, 0, 0, 0)),
@@ -237,7 +251,9 @@ class _FloatingActionButtonExampleState
             Container(
               height: mapHeight,
               color: const Color.fromARGB(255, 255, 255, 255),
-              child: Stack(children: nodeIcons),
+              child: selectedFloor == 1
+                  ? Stack(children: nodeIcons)
+                  : _getImage(selectedFloor),
             ),
             const Divider(height: 20, color: Color.fromARGB(0, 0, 0, 0)),
             Row(
