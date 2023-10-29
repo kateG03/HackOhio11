@@ -1,7 +1,7 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:my_indoor_nav/UI/search_screen2.dart';
-//import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 class StartScreen extends StatefulWidget {
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');

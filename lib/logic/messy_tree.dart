@@ -1,3 +1,5 @@
+import 'package:geolocator/geolocator.dart';
+
 class MessyNode {
   var data = Null;
   double latitude;
@@ -21,6 +23,16 @@ class MessyNode {
 
 class MessyTree {
   MessyNode head = MessyNode(latitude: 0, longitude: 0);
+
+  var graph;
+
+  void addNode(MessyNode node) {
+    var temp;
+    for (MessyNode n in node.connections) {
+      temp[n]=Geolocator.distanceBetween(node.latitude,node.longitude,n.latitude,n.longitude);
+    }
+    graph[node]=temp;
+  }
 
   List<MessyNode> test(MessyNode start, MessyNode end, MessyNode caller) {
     List<MessyNode> path = List.empty(growable: true);
