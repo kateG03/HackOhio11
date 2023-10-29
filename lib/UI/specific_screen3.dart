@@ -22,7 +22,7 @@ class _SpecificScreenState extends State<SpecificScreen> {
         "assets/OUFloor3BWBATHROOMS.png"
       ];
       return Image.asset(bathroomImages[newPosition]);
-    } else if (widget.category == "Stairs") {
+    } else if (widget.category == "Stairs & Elevators") {
       List<String> stairsImages = <String>[
         "assets/OUBasementBWSTAIRS.png",
         "assets/OUFloor1BWSTAIRS.png",
