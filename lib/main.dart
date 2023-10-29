@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'MyIndoorNav',
       theme: ThemeData.light(),
       home: const MyHomePage(title: 'MyIndoorNav'),
@@ -33,17 +34,11 @@ class _MyHomePageState extends State<MyHomePage> {
     await RoomList().createRoomList();
   }
 
-  void permissions() async{
-    Map<Permission, PermissionStatus> status = await [
-    Permission.location,
-    ].request();
-  }
   
   @override
   void initState() {
     super.initState();
     buffer();
-    permissions();
   }
 
   @override
