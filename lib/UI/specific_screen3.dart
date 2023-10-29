@@ -13,7 +13,6 @@ class _SpecificScreenState extends State<SpecificScreen> {
   Color selectedFloorColor = const Color.fromARGB(255, 198, 36, 36);
   int selectedFloor = 1;
 
-
   Widget _getHighlightedImage(int newPosition) {
     if (widget.category == "Bathrooms") {
       List<String> bathroomImages = <String>[
@@ -65,14 +64,17 @@ class _SpecificScreenState extends State<SpecificScreen> {
                       backgroundColor: selectedFloor == 0
                           ? selectedFloorColor
                           : unselectedFloorColor,
-                      onPressed: () {
-                        setState(() {
-                          selectedFloor = 0;
-                        });
-                      },
+                      onPressed: widget.category != "Exits"
+                          ? () {
+                              setState(() {
+                                selectedFloor = 0;
+                              });
+                            }
+                          : null,
                       child: const Text("B",
                           style: TextStyle(
-                              color: Color.fromARGB(255, 255, 255, 255), fontSize: 20))),
+                              color: Color.fromARGB(255, 255, 255, 255),
+                              fontSize: 20))),
                   FloatingActionButton(
                     heroTag: "btn5",
                     backgroundColor: selectedFloor == 1
@@ -85,35 +87,42 @@ class _SpecificScreenState extends State<SpecificScreen> {
                     },
                     child: const Text("1",
                         style: TextStyle(
-                            color: Color.fromARGB(255, 255, 255, 255), fontSize: 20)),
+                            color: Color.fromARGB(255, 255, 255, 255),
+                            fontSize: 20)),
                   ),
                   FloatingActionButton(
                     heroTag: "btn6",
                     backgroundColor: selectedFloor == 2
                         ? selectedFloorColor
                         : unselectedFloorColor,
-                    onPressed: () {
-                      setState(() {
-                        selectedFloor = 2;
-                      });
-                    },
+                    onPressed: widget.category != "Exits"
+                        ? () {
+                            setState(() {
+                              selectedFloor = 0;
+                            });
+                          }
+                        : null,
                     child: const Text("2",
                         style: TextStyle(
-                            color: Color.fromARGB(255, 255, 255, 255), fontSize: 20)),
+                            color: Color.fromARGB(255, 255, 255, 255),
+                            fontSize: 20)),
                   ),
                   FloatingActionButton(
                     heroTag: "btn7",
                     backgroundColor: selectedFloor == 3
                         ? selectedFloorColor
                         : unselectedFloorColor,
-                    onPressed: () {
-                      setState(() {
-                        selectedFloor = 3;
-                      });
-                    },
+                    onPressed: widget.category != "Exits"
+                        ? () {
+                            setState(() {
+                              selectedFloor = 0;
+                            });
+                          }
+                        : null,
                     child: const Text("3",
                         style: TextStyle(
-                            color: Color.fromARGB(255, 255, 255, 255), fontSize: 20)),
+                            color: Color.fromARGB(255, 255, 255, 255),
+                            fontSize: 20)),
                   ),
                 ],
               ),
@@ -122,13 +131,11 @@ class _SpecificScreenState extends State<SpecificScreen> {
                   height: 400,
                   color: const Color.fromARGB(255, 255, 255, 255),
                   child: _getHighlightedImage(selectedFloor)),
-                  //color: const  Color.fromARGB(255, 255, 255, 255),
-                  //child: _getImage(selectedFloor)),
+              //color: const  Color.fromARGB(255, 255, 255, 255),
+              //child: _getImage(selectedFloor)),
               const Divider(height: 40, color: Color.fromARGB(0, 0, 0, 0)),
               Container(
-                height: 121,
-                color: const Color.fromARGB(255, 198, 36, 36)
-              )
+                  height: 121, color: const Color.fromARGB(255, 198, 36, 36))
             ]));
   }
 }
