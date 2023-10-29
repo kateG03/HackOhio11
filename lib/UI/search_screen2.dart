@@ -130,18 +130,10 @@ class _FloatingActionButtonExampleState
               ),
               const Divider(height: 18, color: Color.fromARGB(0, 0, 0, 0)),
               Container(
-                  height: 400,
-                  color: const Color.fromARGB(255, 255, 255, 255),
-                  child: 
-                  
-                  Stack(
-                    children: [
- _getImage(selectedFloor)
-                    ]
-                 ),
-
-
-
+                height: 400,
+                color: const Color.fromARGB(255, 255, 255, 255),
+                child: Stack(children: [_getImage(selectedFloor)]),
+              ),
               const Divider(height: 20, color: Color.fromARGB(0, 0, 0, 0)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -160,7 +152,11 @@ class _FloatingActionButtonExampleState
                                       )));
                         });
                       },
-                      child: const Icon(Icons.wc, color: Colors.white, size: 35,),
+                      child: const Icon(
+                        Icons.wc,
+                        color: Colors.white,
+                        size: 35,
+                      ),
                     ),
                     const Divider(
                         height: 10, color: Color.fromARGB(0, 0, 0, 0)),
@@ -180,9 +176,14 @@ class _FloatingActionButtonExampleState
                                       )));
                         });
                       },
-                      child: const Icon(Icons.stairs_rounded, color: Colors.white, size: 35,),
+                      child: const Icon(
+                        Icons.stairs_rounded,
+                        color: Colors.white,
+                        size: 35,
+                      ),
                     ),
-                    const Divider(height: 10, color: Color.fromARGB(0, 0, 0, 0)),
+                    const Divider(
+                        height: 10, color: Color.fromARGB(0, 0, 0, 0)),
                     const Text("Stairs")
                   ]),
                   Column(children: [
@@ -199,7 +200,11 @@ class _FloatingActionButtonExampleState
                                       )));
                         });
                       },
-                      child: const Icon(Icons.door_back_door_outlined, color: Colors.white, size: 35,),
+                      child: const Icon(
+                        Icons.door_back_door_outlined,
+                        color: Colors.white,
+                        size: 35,
+                      ),
                     ),
                     const Divider(
                         height: 10, color: Color.fromARGB(0, 0, 0, 0)),
